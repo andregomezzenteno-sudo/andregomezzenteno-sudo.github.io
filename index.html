@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="André Gómez Zenteno — Tecnología, automatización y estrategia financiera al servicio de tu negocio.">
+  <title>André Gómez Zenteno</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#1d1d1f;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes imgIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+    @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.4)}55%{box-shadow:0 4px 24px rgba(37,211,102,.4),0 0 0 12px rgba(37,211,102,0)}}
+    @keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+    /* ── Responsive helpers ── */
+    @media(max-width:960px){
+      .mob-hide{display:none!important}
+      .mob-col{flex-direction:column!important}
+      .mob-single{grid-template-columns:1fr!important}
+      .mob-pad{padding-top:72px!important;padding-bottom:72px!important}
+      .mob-2col{grid-template-columns:1fr 1fr!important}
+    }
+    @media(max-width:620px){
+      .mob-pad{padding-left:6%!important;padding-right:6%!important;padding-top:60px!important;padding-bottom:60px!important}
+      .mob-2col{grid-template-columns:1fr!important}
+    }
+
+    /* ── Hover effects ── */
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:500;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:waPulse 2.8s ease-in-out infinite;transition:transform .2s;}
+    .wa-float:hover{transform:scale(1.12)}
+
+    #main-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;transition:background .3s,box-shadow .3s;animation:fadeUp .5s ease both;}
+
+    .nav-link{font-size:14px;font-weight:500;color:#6e6e73;transition:color .2s}
+    .nav-link:hover{color:#1d1d1f}
+
+    .btn-nav-wa{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#fff;background:#25D366;padding:9px 18px;border-radius:100px;transition:all .2s}
+    .btn-nav-wa:hover{background:#1fb956;transform:translateY(-1px)}
+
+    .btn-hero-wa{display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:100px;box-shadow:0 4px 24px rgba(37,211,102,.35);transition:all .25s}
+    .btn-hero-wa:hover{background:#1fb956;transform:translateY(-2px);box-shadow:0 10px 36px rgba(37,211,102,.45)}
+
+    .link-down{font-size:15px;font-weight:500;color:#1d1d1f;border-bottom:1.5px solid rgba(29,29,31,.22);padding-bottom:2px;transition:opacity .2s}
+    .link-down:hover{opacity:.45}
+
+    .card-service{background:#fff;border-radius:24px;padding:32px;border:1px solid rgba(0,0,0,.06);transition:all .3s}
+    .card-service:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.1)}
+    .card-service-dark{background:#1d1d1f;border-radius:24px;padding:32px;border:1px solid rgba(255,255,255,.07);transition:all .3s}
+    .card-service-dark:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.28)}
+
+    .link-consult{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;transition:gap .2s}
+    .link-consult:hover{gap:9px}
+
+    .card-project{border-radius:28px;overflow:hidden;transition:all .35s}
+    .card-project:hover{transform:translateY(-6px);box-shadow:0 36px 80px rgba(0,0,0,.3)}
+
+    .btn-project-serom{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#fff;background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);padding:10px 20px;border-radius:100px;transition:all .2s}
+    .btn-project-serom:hover{background:rgba(124,58,237,.4)}
+
+    .btn-project-ape{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);padding:10px 20px;border-radius:100px;transition:all .2s}
+    .btn-project-ape:hover{background:rgba(255,255,255,.18)}
+
+    .btn-linkedin{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:#fff;background:#0077B5;padding:12px 24px;border-radius:100px;transition:all .22s}
+    .btn-linkedin:hover{background:#006097;transform:translateY(-2px)}
+
+    .btn-cta-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-size:16px;font-weight:700;padding:16px 34px;border-radius:100px;box-shadow:0 6px 32px rgba(37,211,102,.35);transition:all .25s}
+    .btn-cta-wa:hover{background:#1fb956;transform:translateY(-3px);box-shadow:0 16px 52px rgba(37,211,102,.45)}
+
+    .link-phone{font-size:15px;font-weight:500;color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;transition:all .2s}
+    .link-phone:hover{color:rgba(255,255,255,.9);border-bottom-color:rgba(255,255,255,.65)}
+
+    .footer-link{font-size:13px;color:rgba(255,255,255,.35);transition:color .2s}
+    .footer-link:hover{color:rgba(255,255,255,.85)}
+    .footer-link-wa:hover{color:#25D366}
+
+    /* ── Contact Form ── */
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-label{font-size:13px;font-weight:600;color:#1d1d1f}
+    .form-input{padding:13px 16px;border:1.5px solid #e0e0e8;border-radius:12px;font-family:inherit;font-size:14px;color:#1d1d1f;background:#fff;outline:none;transition:border-color .2s}
+    .form-input:focus{border-color:#0071E3}
+    .form-input::placeholder{color:#b0b0b8}
+    .form-select{padding:13px 16px;border:1.5px solid #e0e0e8;border-radius:12px;font-family:inherit;font-size:14px;color:#1d1d1f;background:#fff;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+    .form-select:focus{border-color:#0071E3}
+    .form-textarea{padding:13px 16px;border:1.5px solid #e0e0e8;border-radius:12px;font-family:inherit;font-size:14px;color:#1d1d1f;background:#fff;outline:none;transition:border-color .2s;resize:vertical;min-height:120px}
+    .form-textarea:focus{border-color:#0071E3}
+    .form-textarea::placeholder{color:#b0b0b8}
+    .btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#0071E3;color:#fff;font-size:15px;font-weight:700;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;font-family:inherit;transition:all .25s;width:100%}
+    .btn-submit:hover{background:#0064c8;transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,113,227,.35)}
+    .btn-submit:disabled{background:#b0b0b8;cursor:not-allowed;transform:none;box-shadow:none}
+    .form-success{display:none;background:#e6faf3;border:1px solid rgba(16,185,129,.3);border-radius:14px;padding:20px 24px;text-align:center}
+    .form-success p{color:#10b981;font-weight:600;font-size:15px}
+    .form-error{display:none;background:#fff0ee;border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:14px 18px;margin-top:12px}
+    .form-error p{color:#ef4444;font-size:13px;font-weight:500}
+  </style>
+</head>
+<body>
+
+<!-- ══ FLOATING WHATSAPP ══ -->
+<a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
+   target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="main-nav">
+  <a href="#inicio" style="font-size:20px;font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">
+    André<span style="color:#0071E3;">.</span>
+  </a>
+  <div style="display:flex;gap:32px;align-items:center;" class="mob-hide">
+    <a href="#servicios" class="nav-link">Servicios</a>
+    <a href="#proyectos" class="nav-link">Proyectos</a>
+    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+    <a href="#contacto" class="nav-link">Contacto</a>
+    <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
+       target="_blank" rel="noopener" class="btn-nav-wa">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="inicio" style="min-height:100dvh;display:flex;align-items:center;padding:88px 6% 72px;background:#fff;position:relative;overflow:hidden;" class="mob-col">
+  <div style="position:absolute;top:-15%;right:-5%;width:70vw;height:70vw;max-width:780px;max-height:780px;background:radial-gradient(circle,rgba(0,113,227,.07) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;"></div>
+
+  <!-- Left: Text -->
+  <div style="flex:1;min-width:0;position:relative;z-index:1;animation:fadeUp .9s .1s ease both;opacity:0;padding-right:4%;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#f0f7ff;border:1px solid rgba(0,113,227,.2);border-radius:100px;padding:7px 16px;margin-bottom:30px;">
+      <span style="width:7px;height:7px;background:#0071E3;border-radius:50%;flex-shrink:0;animation:dotBlink 2s ease infinite;"></span>
+      <span style="font-size:12px;font-weight:600;color:#0071E3;letter-spacing:.05em;text-transform:uppercase;">Disponible para proyectos</span>
+    </div>
+
+    <h1 style="font-size:clamp(48px,6vw,80px);font-weight:700;line-height:1.0;letter-spacing:-.045em;color:#1d1d1f;margin-bottom:20px;">
+      André<br>Gómez<br><span style="color:#0071E3;">Zenteno</span>
+    </h1>
+
+    <p style="font-size:clamp(16px,1.6vw,19px);color:#6e6e73;line-height:1.7;max-width:460px;margin-bottom:38px;font-weight:400;">
+      Tecnología, automatización y estrategia financiera al servicio de tu negocio.
+    </p>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
+         target="_blank" rel="noopener" class="btn-hero-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hablemos
+      </a>
+      <a href="#servicios" class="link-down">Ver servicios ↓</a>
+    </div>
+
+    <!-- Stats -->
+    <div style="display:flex;gap:36px;margin-top:54px;padding-top:38px;border-top:1px solid #e8e8ed;">
+      <div>
+        <p style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">5</p>
+        <p style="font-size:12px;color:#6e6e73;margin-top:3px;">Servicios</p>
+      </div>
+      <div>
+        <p style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">2</p>
+        <p style="font-size:12px;color:#6e6e73;margin-top:3px;">Webs en producción</p>
+      </div>
+      <div>
+        <p style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">3</p>
+        <p style="font-size:12px;color:#6e6e73;margin-top:3px;">Países</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Photo -->
+  <div style="flex:0 0 auto;width:clamp(280px,33vw,420px);position:relative;z-index:1;animation:imgIn 1.1s .35s ease both;opacity:0;" class="mob-hide">
+    <div style="position:relative;">
+      <img src="photo-new.png" alt="André Gómez Zenteno"
+           style="position:relative;z-index:1;width:100%;object-fit:cover;aspect-ratio:3/4;object-position:top center;-webkit-mask-image:linear-gradient(to bottom,black 62%,transparent 94%);mask-image:linear-gradient(to bottom,black 62%,transparent 94%);" />
+      <div style="position:absolute;top:22px;right:-18px;background:#1d1d1f;border-radius:14px;padding:10px 15px;box-shadow:0 8px 30px rgba(0,0,0,.22);z-index:2;display:flex;align-items:center;gap:7px;">
+        <div style="width:8px;height:8px;background:#25D366;border-radius:50%;flex-shrink:0;"></div>
+        <p style="font-size:11px;font-weight:600;color:#fff;white-space:nowrap;">Disponible ahora</p>
+      </div>
+      <div style="position:absolute;bottom:-14px;left:-18px;background:#fff;border-radius:16px;padding:11px 16px;box-shadow:0 8px 32px rgba(0,0,0,.1);z-index:2;display:flex;align-items:center;gap:10px;">
+        <span style="font-size:20px;line-height:1;">🌎</span>
+        <div>
+          <p style="font-size:11px;font-weight:700;color:#1d1d1f;line-height:1.3;">GT · España · Nashville</p>
+          <p style="font-size:10px;color:#6e6e73;margin-top:2px;">Remoto · Global</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICIOS ══ -->
+<section id="servicios" style="background:#f5f5f7;padding:100px 6%;" class="mob-pad">
+  <div style="max-width:1240px;margin:0 auto;">
+    <div data-animate style="margin-bottom:60px;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Servicios</p>
+      <h2 style="font-size:clamp(32px,3.8vw,52px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;">Lo que puedo hacer por ti</h2>
+    </div>
+
+    <!-- Row 1: 3 cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;" class="mob-single">
+      <!-- 01 Web -->
+      <div data-animate class="card-service">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+          <div style="width:46px;height:46px;background:#e8f3ff;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">01</span>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Creación de Páginas Web</h3>
+        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Sitios modernos, rápidos y optimizados para móvil. Desde landing pages hasta webs completas adaptadas a tu negocio.</p>
+        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20servicio%20de%20Creación%20de%20Páginas%20Web"
+           target="_blank" rel="noopener" class="link-consult" style="color:#0071E3;">Consultar →</a>
+      </div>
+
+      <!-- 02 IA -->
+      <div data-animate class="card-service">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+          <div style="width:46px;height:46px;background:#f3ecff;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">02</span>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Cursos de IA para Principiantes</h3>
+        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Aprende a usar Inteligencia Artificial desde cero. Clases prácticas para integrar IA en tu día a día o negocio.</p>
+        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20Curso%20de%20IA"
+           target="_blank" rel="noopener" class="link-consult" style="color:#7c3aed;">Consultar →</a>
+      </div>
+
+      <!-- 03 Automatización (dark) -->
+      <div data-animate class="card-service-dark">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+          <div style="width:46px;height:46px;background:rgba(245,158,11,.14);border-radius:14px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.06em;">03</span>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.025em;">Automatización con Formularios</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:26px;">Formularios inteligentes conectados a emails y bases de datos. Eliminá tareas manuales y ahorrá tiempo en tu negocio.</p>
+        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20la%20Automatización%20con%20Formularios"
+           target="_blank" rel="noopener" class="link-consult" style="color:#f59e0b;">Consultar →</a>
+      </div>
+    </div>
+
+    <!-- Row 2: 2 cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
+      <!-- 04 Finanzas -->
+      <div data-animate class="card-service">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+          <div style="width:46px;height:46px;background:#e6faf3;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">04</span>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Finanzas Personales y Mercados</h3>
+        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Orientación para iniciarte en mercados financieros e inversión. Basado en experiencia real en trading y criptoactivos.</p>
+        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20las%20Finanzas%20Personales"
+           target="_blank" rel="noopener" class="link-consult" style="color:#10b981;">Consultar →</a>
+      </div>
+
+      <!-- 05 Chatbots -->
+      <div data-animate class="card-service">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+          <div style="width:46px;height:46px;background:#fff0ee;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">05</span>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Chatbots con IA para Negocios</h3>
+        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Chatbots inteligentes que atienden a tus clientes 24/7, responden preguntas frecuentes y automatizan la comunicación.</p>
+        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20los%20Chatbots%20con%20IA"
+           target="_blank" rel="noopener" class="link-consult" style="color:#ef4444;">Consultar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROYECTOS ══ -->
+<section id="proyectos" style="background:#fff;padding:100px 6%;" class="mob-pad">
+  <div style="max-width:1240px;margin:0 auto;">
+    <div data-animate style="margin-bottom:60px;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Proyectos</p>
+      <h2 style="font-size:clamp(32px,3.8vw,52px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;">Lo que he construido</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="mob-single">
+      <!-- SEROM A&G -->
+      <div data-animate class="card-project" style="background:#06060E;border:1px solid rgba(124,58,237,.18);">
+        <div style="height:200px;background:linear-gradient(145deg,#06060E 0%,#0d0b1a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(124,58,237,.4) 0%,transparent 60%);pointer-events:none;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <img src="serom-logo.png" alt="Serom A&G" style="height:38px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin:0 auto 12px;" />
+            <p style="font-family:monospace;font-size:11px;font-weight:600;color:rgba(167,139,250,.6);letter-spacing:.18em;text-transform:uppercase;">seromautomationgrowth.es</p>
+          </div>
+        </div>
+        <div style="padding:32px 34px 34px;">
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px;">
+            <span style="font-size:11px;font-weight:600;color:rgba(167,139,250,.85);background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.28);padding:4px 12px;border-radius:100px;">Automatización</span>
+            <span style="font-size:11px;font-weight:600;color:rgba(167,139,250,.85);background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.28);padding:4px 12px;border-radius:100px;">Landing Page</span>
+            <span style="font-size:11px;font-weight:600;color:rgba(167,139,250,.85);background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.28);padding:4px 12px;border-radius:100px;">Dark Design</span>
+          </div>
+          <h3 style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:10px;">SEROM A&amp;G</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.48);line-height:1.72;margin-bottom:28px;">Automation &amp; Growth. Landing page premium con estética oscura, partículas animadas y formulario multi-paso para captación de leads.</p>
+          <a href="https://seromautomationgrowth.es" target="_blank" rel="noopener" class="btn-project-serom">Ver proyecto ↗</a>
+        </div>
+      </div>
+
+      <!-- ALL PAIN ENDS -->
+      <div data-animate class="card-project" style="background:#0a0a0a;border:1px solid rgba(255,255,255,.08);">
+        <div style="height:200px;background:linear-gradient(145deg,#111 0%,#0a0a0a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(255,255,255,.07) 0%,transparent 60%);pointer-events:none;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <p style="font-size:42px;font-weight:300;color:#fff;letter-spacing:-.04em;font-family:Georgia,'Times New Roman',serif;font-style:italic;margin-bottom:10px;line-height:1;">дрЭ</p>
+            <p style="font-family:monospace;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.18em;text-transform:uppercase;">allpainends.pages.dev</p>
+          </div>
+        </div>
+        <div style="padding:32px 34px 34px;">
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px;">
+            <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:4px 12px;border-radius:100px;">Marca Personal</span>
+            <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:4px 12px;border-radius:100px;">Bilingüe ES/EN</span>
+            <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:4px 12px;border-radius:100px;">Minimal</span>
+          </div>
+          <h3 style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:10px;">дрЭ — All Pain Ends</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.45);line-height:1.72;margin-bottom:28px;">Proyecto de marca personal con diseño editorial minimalista, tipografía serif, animaciones sutiles y toggle de idioma ES/EN.</p>
+          <a href="https://allpainends.pages.dev" target="_blank" rel="noopener" class="btn-project-ape">Ver proyecto ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOBRE MÍ ══ -->
+<section id="sobre-mi" style="background:#f5f5f7;padding:100px 6%;" class="mob-pad">
+  <div style="max-width:1240px;margin:0 auto;display:flex;gap:80px;align-items:center;" class="mob-col">
+    <div style="flex:1;min-width:0;" data-animate>
+      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Sobre mí</p>
+      <h2 style="font-size:clamp(30px,3.6vw,48px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.06;margin-bottom:24px;">Tecnología, mercados y<br>mentalidad de alto rendimiento</h2>
+      <p style="font-size:16px;color:#6e6e73;line-height:1.78;margin-bottom:14px;">Soy André. Combino tecnología, mercados financieros y mentalidad competitiva. Opero activamente en mercados bursátiles y criptoactivos.</p>
+      <p style="font-size:16px;color:#6e6e73;line-height:1.78;margin-bottom:36px;">Ese mismo enfoque analítico y de alto rendimiento lo aplico a cada proyecto digital.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:36px;">
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#fff;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">📈 Trading activo</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#fff;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">🤖 IA aplicada</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#fff;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">🌎 Guatemala · España · Nashville</span>
+      </div>
+
+      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        Ver perfil en LinkedIn
+      </a>
+    </div>
+
+    <!-- Right: 4-tile grid -->
+    <div style="flex:0 0 380px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:340px;" class="mob-hide" data-animate>
+      <div style="background:#fff;border-radius:20px;padding:24px 22px;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;justify-content:space-between;">
+        <span style="font-size:28px;line-height:1;">📈</span>
+        <div>
+          <p style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:4px;letter-spacing:-.02em;">Mercados</p>
+          <p style="font-size:12px;color:#6e6e73;line-height:1.5;">Trading en acciones y cripto</p>
+        </div>
+      </div>
+      <div style="background:#1d1d1f;border-radius:20px;padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+        <span style="font-size:28px;line-height:1;">🌍</span>
+        <div>
+          <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-.02em;">Global</p>
+          <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;">GT · España · Nashville</p>
+        </div>
+      </div>
+      <div style="background:#0071E3;border-radius:20px;padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+        <span style="font-size:28px;line-height:1;">🤖</span>
+        <div>
+          <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-.02em;">IA &amp; Tech</p>
+          <p style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.5;">Automatización digital</p>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:20px;padding:24px 22px;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;justify-content:space-between;">
+        <span style="font-size:28px;line-height:1;">🚀</span>
+        <div>
+          <p style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:4px;letter-spacing:-.02em;">Proyectos</p>
+          <p style="font-size:12px;color:#6e6e73;line-height:1.5;">Webs, bots y automatizaciones</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACTO (BACKEND FORM) ══ -->
+<section id="contacto" style="background:#fff;padding:100px 6%;" class="mob-pad">
+  <div style="max-width:780px;margin:0 auto;">
+    <div data-animate style="margin-bottom:52px;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Contacto</p>
+      <h2 style="font-size:clamp(30px,3.8vw,50px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;margin-bottom:16px;">Cuéntame tu proyecto</h2>
+      <p style="font-size:16px;color:#6e6e73;line-height:1.7;">Respondo en menos de 24 horas. También puedes escribirme directamente por WhatsApp.</p>
+    </div>
+
+    <!-- Contact Form — powered by Formspree -->
+    <!-- SETUP: Go to https://formspree.io, create a free account, create a new form,
+         and replace YOUR_FORM_ID below with your actual form ID (e.g. xyzabcde) -->
+    <form id="contact-form" data-animate
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          style="display:flex;flex-direction:column;gap:20px;">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
+        <div class="form-group">
+          <label class="form-label" for="name">Nombre completo</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="service">Servicio de interés</label>
+        <select class="form-select" id="service" name="service" required>
+          <option value="" disabled selected>Selecciona un servicio...</option>
+          <option value="web">🌐 Creación de Páginas Web</option>
+          <option value="ia">🤖 Cursos de IA para Principiantes</option>
+          <option value="automatizacion">⚡ Automatización con Formularios</option>
+          <option value="finanzas">📈 Finanzas Personales y Mercados</option>
+          <option value="chatbots">💬 Chatbots con IA para Negocios</option>
+          <option value="otro">Otro / Consulta general</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Cuéntame más</label>
+        <textarea class="form-textarea" id="message" name="message"
+                  placeholder="Describe tu proyecto, presupuesto aproximado, plazos..." required></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="Nuevo contacto desde andreGomezZenteno.com">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <div>
+        <button type="submit" class="btn-submit" id="submit-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Enviar mensaje
+        </button>
+        <div class="form-error" id="form-error"><p id="form-error-msg">Algo salió mal. Intenta de nuevo o escríbeme por WhatsApp.</p></div>
+      </div>
+    </form>
+
+    <!-- Success message (shown after submission) -->
+    <div class="form-success" id="form-success">
+      <p>✅ ¡Mensaje enviado! Te respondo en menos de 24 horas.</p>
+    </div>
+
+    <!-- Alternative contact -->
+    <div data-animate style="margin-top:40px;padding-top:32px;border-top:1px solid #e8e8ed;display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+      <p style="font-size:14px;color:#6e6e73;">Prefiero respuesta rápida:</p>
+      <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
+         target="_blank" rel="noopener" class="btn-hero-wa" style="font-size:14px;padding:11px 22px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp directo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section style="background:#1d1d1f;padding:110px 6%;text-align:center;position:relative;overflow:hidden;" class="mob-pad">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:420px;background:radial-gradient(ellipse,rgba(0,113,227,.15) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;" data-animate>
+    <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,162,255,.7);margin-bottom:18px;">Hablemos</p>
+    <h2 style="font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:-.045em;color:#fff;line-height:1.03;margin-bottom:22px;">¿Listo para empezar?</h2>
+    <p style="font-size:17px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:48px;font-weight:300;max-width:500px;margin-left:auto;margin-right:auto;">Cuéntame tu proyecto. Respondo en menos de 24 horas.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-bottom:32px;">
+      <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
+         target="_blank" rel="noopener" class="btn-cta-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <a href="tel:+34603126012" class="link-phone">+34 603 126 012</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer style="background:#111;padding:36px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,.05);" class="mob-col">
+  <a href="#inicio" style="font-size:18px;font-weight:700;letter-spacing:-.04em;color:#fff;">
+    André<span style="color:#0071E3;">.</span>
+  </a>
+  <div style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;">
+    <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+    <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
+       target="_blank" rel="noopener" class="footer-link footer-link-wa">WhatsApp</a>
+    <span style="font-size:13px;color:rgba(255,255,255,.2);">+34 603 126 012</span>
+  </div>
+  <p style="font-size:12px;color:rgba(255,255,255,.18);">© 2025 André Gómez Zenteno</p>
+</footer>
+
+<script>
+  // ── Navbar: glassmorphism on scroll ──
+  const nav = document.getElementById('main-nav');
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(255,255,255,0.88)';
+      nav.style.backdropFilter = 'blur(20px)';
+      nav.style.webkitBackdropFilter = 'blur(20px)';
+      nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.07)';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.backdropFilter = 'none';
+      nav.style.webkitBackdropFilter = 'none';
+      nav.style.boxShadow = 'none';
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Scroll-triggered fade-up animations ──
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const idx = parseInt(el.dataset.animIdx || '0', 10);
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, idx * 80);
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  let animIdx = 0;
+  document.querySelectorAll('[data-animate]').forEach((el) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.75s ease, transform 0.75s cubic-bezier(0.16,1,0.3,1)';
+    el.dataset.animIdx = String(animIdx++);
+    observer.observe(el);
+  });
+
+  // ── Contact form: Formspree AJAX submission ──
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formSuccess = document.getElementById('form-success');
+  const formError = document.getElementById('form-error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Check if Formspree ID is configured
+    if (form.action.includes('YOUR_FORM_ID')) {
+      formError.style.display = 'block';
+      document.getElementById('form-error-msg').textContent =
+        'El formulario aún no está configurado. Por favor configura tu Formspree ID o usa WhatsApp directamente.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin .8s linear infinite"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0"/></svg> Enviando...';
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        formSuccess.style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      formError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar mensaje';
+    }
+  });
+</script>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+</body>
+</html>
