@@ -24,6 +24,14 @@
     @keyframes spin{to{transform:rotate(360deg)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+    /* ── Scroll animations (CSS-driven, GPU compositor) ── */
+    [data-animate]{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.16,1,0.3,1);will-change:transform,opacity;}
+    [data-animate].is-visible{opacity:1;transform:translateY(0);will-change:auto;}
+
+    /* ── Navbar scrolled state ── */
+    #main-nav.scrolled{background:rgba(255,255,255,0.9)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;box-shadow:0 1px 0 rgba(0,0,0,0.07)!important;}
+    #main-nav{transition:background .3s,box-shadow .3s;will-change:transform;}
+
     /* ── WA float ── */
     .wa-float{position:fixed;bottom:24px;right:24px;z-index:500;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:waPulse 2.8s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent;}
     .wa-float:active{transform:scale(.93)}
@@ -533,32 +541,28 @@
 </footer>
 
 <script>
-  // ── Navbar glass ──
+  // ── Navbar glass (class toggle, no style mutations per scroll) ──
   const nav = document.getElementById('main-nav');
+  let lastScrolled = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.style.background = 'rgba(255,255,255,0.9)';
-      nav.style.backdropFilter = 'blur(20px)';
-      nav.style.webkitBackdropFilter = 'blur(20px)';
-      nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.07)';
-    } else {
-      nav.style.background = 'transparent';
-      nav.style.backdropFilter = 'none';
-      nav.style.webkitBackdropFilter = 'none';
-      nav.style.boxShadow = 'none';
+    const shouldScroll = window.scrollY > 50;
+    if (shouldScroll !== lastScrolled) {
+      nav.classList.toggle('scrolled', shouldScroll);
+      lastScrolled = shouldScroll;
     }
   }, { passive: true });
 
-  // ── Scroll animations ──
+  // ── Scroll animations (class-based, styles stay in CSS) ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const idx = parseInt(el.dataset.animIdx || '0', 10);
-        setTimeout(() => {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, idx * 70);
+        const delay = parseInt(el.dataset.animDelay || '0', 10);
+        if (delay) {
+          setTimeout(() => el.classList.add('is-visible'), delay);
+        } else {
+          el.classList.add('is-visible');
+        }
         observer.unobserve(el);
       }
     });
@@ -566,10 +570,8 @@
 
   let animIdx = 0;
   document.querySelectorAll('[data-animate]').forEach((el) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)';
-    el.dataset.animIdx = String(animIdx++);
+    el.dataset.animDelay = String(animIdx * 70);
+    animIdx++;
     observer.observe(el);
   });
 
