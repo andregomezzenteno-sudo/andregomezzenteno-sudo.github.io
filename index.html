@@ -53,9 +53,9 @@
     .link-down{font-size:15px;font-weight:500;color:#1d1d1f;border-bottom:1.5px solid rgba(29,29,31,.22);padding-bottom:2px;transition:opacity .2s}
     .link-down:hover{opacity:.45}
 
-    .card-service{background:#fff;border-radius:24px;padding:32px;border:1px solid rgba(0,0,0,.06);transition:all .3s}
+    .card-service{background:#fff;border-radius:24px;padding:32px;border:1px solid rgba(0,0,0,.06);transition:all .3s;flex:0 0 320px}
     .card-service:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.1)}
-    .card-service-dark{background:#1d1d1f;border-radius:24px;padding:32px;border:1px solid rgba(255,255,255,.07);transition:all .3s}
+    .card-service-dark{background:#1d1d1f;border-radius:24px;padding:32px;border:1px solid rgba(255,255,255,.07);transition:all .3s;flex:0 0 320px}
     .card-service-dark:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.28)}
 
     .link-consult{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;transition:gap .2s}
@@ -101,6 +101,22 @@
     .form-success p{color:#10b981;font-weight:600;font-size:15px}
     .form-error{display:none;background:#fff0ee;border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:14px 18px;margin-top:12px}
     .form-error p{color:#ef4444;font-size:13px;font-weight:500}
+
+    /* ── Carousel ── */
+    .carousel-wrap{position:relative;}
+    .carousel-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;}
+    .carousel-track::-webkit-scrollbar{display:none;}
+    .carousel-track{-ms-overflow-style:none;scrollbar-width:none;}
+    .carousel-track .card-service,
+    .carousel-track .card-service-dark{scroll-snap-align:start;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(0,0,0,.1);background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all .2s;}
+    .carousel-btn:hover{box-shadow:0 8px 28px rgba(0,0,0,.16);transform:translateY(-50%) scale(1.06);}
+    .carousel-btn.prev{left:-22px;}
+    .carousel-btn.next{right:-22px;}
+    @media(max-width:620px){
+      .carousel-btn{display:none;}
+      .card-service,.card-service-dark{flex:0 0 82vw!important;}
+    }
   </style>
 </head>
 <body>
@@ -118,8 +134,8 @@
   </a>
   <div style="display:flex;gap:32px;align-items:center;" class="mob-hide">
     <a href="#servicios" class="nav-link">Servicios</a>
-    <a href="#proyectos" class="nav-link">Proyectos</a>
     <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+    <a href="#proyectos" class="nav-link">Proyectos</a>
     <a href="#contacto" class="nav-link">Contacto</a>
     <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
        target="_blank" rel="noopener" class="btn-nav-wa">
@@ -130,11 +146,10 @@
 </nav>
 
 <!-- ══ HERO ══ -->
-<section id="inicio" style="min-height:100dvh;display:flex;align-items:center;padding:88px 6% 72px;background:#fff;position:relative;overflow:hidden;" class="mob-col">
+<section id="inicio" style="min-height:100dvh;display:flex;align-items:center;padding:88px 6% 72px;background:#fff;position:relative;overflow:hidden;">
   <div style="position:absolute;top:-15%;right:-5%;width:70vw;height:70vw;max-width:780px;max-height:780px;background:radial-gradient(circle,rgba(0,113,227,.07) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;"></div>
 
-  <!-- Left: Text -->
-  <div style="flex:1;min-width:0;position:relative;z-index:1;animation:fadeUp .9s .1s ease both;opacity:0;padding-right:4%;">
+  <div style="flex:1;min-width:0;position:relative;z-index:1;animation:fadeUp .9s .1s ease both;opacity:0;max-width:680px;">
     <div style="display:inline-flex;align-items:center;gap:8px;background:#f0f7ff;border:1px solid rgba(0,113,227,.2);border-radius:100px;padding:7px 16px;margin-bottom:30px;">
       <span style="width:7px;height:7px;background:#0071E3;border-radius:50%;flex-shrink:0;animation:dotBlink 2s ease infinite;"></span>
       <span style="font-size:12px;font-weight:600;color:#0071E3;letter-spacing:.05em;text-transform:uppercase;">Disponible para proyectos</span>
@@ -156,45 +171,10 @@
       </a>
       <a href="#servicios" class="link-down">Ver servicios ↓</a>
     </div>
-
-    <!-- Stats -->
-    <div style="display:flex;gap:36px;margin-top:54px;padding-top:38px;border-top:1px solid #e8e8ed;">
-      <div>
-        <p style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">5</p>
-        <p style="font-size:12px;color:#6e6e73;margin-top:3px;">Servicios</p>
-      </div>
-      <div>
-        <p style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">2</p>
-        <p style="font-size:12px;color:#6e6e73;margin-top:3px;">Webs en producción</p>
-      </div>
-      <div>
-        <p style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">3</p>
-        <p style="font-size:12px;color:#6e6e73;margin-top:3px;">Países</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Right: Photo -->
-  <div style="flex:0 0 auto;width:clamp(280px,33vw,420px);position:relative;z-index:1;animation:imgIn 1.1s .35s ease both;opacity:0;" class="mob-hide">
-    <div style="position:relative;">
-      <img src="photo-new.png" alt="André Gómez Zenteno"
-           style="position:relative;z-index:1;width:100%;object-fit:cover;aspect-ratio:3/4;object-position:top center;-webkit-mask-image:linear-gradient(to bottom,black 62%,transparent 94%);mask-image:linear-gradient(to bottom,black 62%,transparent 94%);" />
-      <div style="position:absolute;top:22px;right:-18px;background:#1d1d1f;border-radius:14px;padding:10px 15px;box-shadow:0 8px 30px rgba(0,0,0,.22);z-index:2;display:flex;align-items:center;gap:7px;">
-        <div style="width:8px;height:8px;background:#25D366;border-radius:50%;flex-shrink:0;"></div>
-        <p style="font-size:11px;font-weight:600;color:#fff;white-space:nowrap;">Disponible ahora</p>
-      </div>
-      <div style="position:absolute;bottom:-14px;left:-18px;background:#fff;border-radius:16px;padding:11px 16px;box-shadow:0 8px 32px rgba(0,0,0,.1);z-index:2;display:flex;align-items:center;gap:10px;">
-        <span style="font-size:20px;line-height:1;">🌎</span>
-        <div>
-          <p style="font-size:11px;font-weight:700;color:#1d1d1f;line-height:1.3;">GT · España · Nashville</p>
-          <p style="font-size:10px;color:#6e6e73;margin-top:2px;">Remoto · Global</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ══ SERVICIOS ══ -->
+<!-- ══ SERVICIOS (CAROUSEL) ══ -->
 <section id="servicios" style="background:#f5f5f7;padding:100px 6%;" class="mob-pad">
   <div style="max-width:1240px;margin:0 auto;">
     <div data-animate style="margin-bottom:60px;">
@@ -202,86 +182,147 @@
       <h2 style="font-size:clamp(32px,3.8vw,52px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;">Lo que puedo hacer por ti</h2>
     </div>
 
-    <!-- Row 1: 3 cards -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;" class="mob-single">
-      <!-- 01 Web -->
-      <div data-animate class="card-service">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
-          <div style="width:46px;height:46px;background:#e8f3ff;border-radius:14px;display:flex;align-items:center;justify-content:center;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    <div class="carousel-wrap" data-animate>
+      <button class="carousel-btn prev" id="carousel-prev" aria-label="Anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="carousel-track" id="carousel-track">
+        <!-- 01 Web -->
+        <div class="card-service">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+              <div style="width:46px;height:46px;background:#e8f3ff;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">01</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Creación de Páginas Web</h3>
+            <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Sitios modernos, rápidos y optimizados para móvil. Desde landing pages hasta webs completas adaptadas a tu negocio.</p>
           </div>
-          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">01</span>
+          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20servicio%20de%20Creación%20de%20Páginas%20Web"
+             target="_blank" rel="noopener" class="link-consult" style="color:#0071E3;">Consultar →</a>
         </div>
-        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Creación de Páginas Web</h3>
-        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Sitios modernos, rápidos y optimizados para móvil. Desde landing pages hasta webs completas adaptadas a tu negocio.</p>
-        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20servicio%20de%20Creación%20de%20Páginas%20Web"
-           target="_blank" rel="noopener" class="link-consult" style="color:#0071E3;">Consultar →</a>
+
+        <!-- 02 IA -->
+        <div class="card-service">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+              <div style="width:46px;height:46px;background:#f3ecff;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">02</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Cursos de IA para Principiantes</h3>
+            <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Aprende a usar Inteligencia Artificial desde cero. Clases prácticas para integrar IA en tu día a día o negocio.</p>
+          </div>
+          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20Curso%20de%20IA"
+             target="_blank" rel="noopener" class="link-consult" style="color:#7c3aed;">Consultar →</a>
+        </div>
+
+        <!-- 03 Automatización (dark) -->
+        <div class="card-service-dark">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+              <div style="width:46px;height:46px;background:rgba(245,158,11,.14);border-radius:14px;display:flex;align-items:center;justify-content:center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.06em;">03</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.025em;">Automatización con Formularios</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:26px;">Formularios inteligentes conectados a emails y bases de datos. Eliminá tareas manuales y ahorrá tiempo en tu negocio.</p>
+          </div>
+          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20la%20Automatización%20con%20Formularios"
+             target="_blank" rel="noopener" class="link-consult" style="color:#f59e0b;">Consultar →</a>
+        </div>
+
+        <!-- 04 Finanzas -->
+        <div class="card-service">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+              <div style="width:46px;height:46px;background:#e6faf3;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">04</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Finanzas Personales y Mercados</h3>
+            <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Orientación para iniciarte en mercados financieros e inversión. Basado en experiencia real en trading y criptoactivos.</p>
+          </div>
+          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20las%20Finanzas%20Personales"
+             target="_blank" rel="noopener" class="link-consult" style="color:#10b981;">Consultar →</a>
+        </div>
+
+        <!-- 05 Chatbots -->
+        <div class="card-service">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
+              <div style="width:46px;height:46px;background:#fff0ee;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">05</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Chatbots con IA para Negocios</h3>
+            <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Chatbots inteligentes que atienden a tus clientes 24/7, responden preguntas frecuentes y automatizan la comunicación.</p>
+          </div>
+          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20los%20Chatbots%20con%20IA"
+             target="_blank" rel="noopener" class="link-consult" style="color:#ef4444;">Consultar →</a>
+        </div>
       </div>
 
-      <!-- 02 IA -->
-      <div data-animate class="card-service">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
-          <div style="width:46px;height:46px;background:#f3ecff;border-radius:14px;display:flex;align-items:center;justify-content:center;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">02</span>
-        </div>
-        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Cursos de IA para Principiantes</h3>
-        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Aprende a usar Inteligencia Artificial desde cero. Clases prácticas para integrar IA en tu día a día o negocio.</p>
-        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20Curso%20de%20IA"
-           target="_blank" rel="noopener" class="link-consult" style="color:#7c3aed;">Consultar →</a>
-      </div>
-
-      <!-- 03 Automatización (dark) -->
-      <div data-animate class="card-service-dark">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
-          <div style="width:46px;height:46px;background:rgba(245,158,11,.14);border-radius:14px;display:flex;align-items:center;justify-content:center;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.06em;">03</span>
-        </div>
-        <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.025em;">Automatización con Formularios</h3>
-        <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:26px;">Formularios inteligentes conectados a emails y bases de datos. Eliminá tareas manuales y ahorrá tiempo en tu negocio.</p>
-        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20la%20Automatización%20con%20Formularios"
-           target="_blank" rel="noopener" class="link-consult" style="color:#f59e0b;">Consultar →</a>
-      </div>
+      <button class="carousel-btn next" id="carousel-next" aria-label="Siguiente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
 
-    <!-- Row 2: 2 cards -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
-      <!-- 04 Finanzas -->
-      <div data-animate class="card-service">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
-          <div style="width:46px;height:46px;background:#e6faf3;border-radius:14px;display:flex;align-items:center;justify-content:center;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">04</span>
-        </div>
-        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Finanzas Personales y Mercados</h3>
-        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Orientación para iniciarte en mercados financieros e inversión. Basado en experiencia real en trading y criptoactivos.</p>
-        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20las%20Finanzas%20Personales"
-           target="_blank" rel="noopener" class="link-consult" style="color:#10b981;">Consultar →</a>
+    <!-- Dots indicator -->
+    <div id="carousel-dots" style="display:flex;justify-content:center;gap:8px;margin-top:32px;"></div>
+  </div>
+</section>
+
+<!-- ══ SOBRE MÍ ══ -->
+<section id="sobre-mi" style="background:#fff;padding:100px 6%;" class="mob-pad">
+  <div style="max-width:1240px;margin:0 auto;display:flex;gap:80px;align-items:center;" class="mob-col">
+    <div style="flex:1;min-width:0;" data-animate>
+      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Sobre mí</p>
+      <h2 style="font-size:clamp(30px,3.6vw,48px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.06;margin-bottom:24px;">Tecnología, mercados y<br>mentalidad de alto rendimiento</h2>
+      <p style="font-size:16px;color:#6e6e73;line-height:1.78;margin-bottom:14px;">Soy André. Combino tecnología, mercados financieros y mentalidad competitiva. Opero activamente en mercados bursátiles y criptoactivos.</p>
+      <p style="font-size:16px;color:#6e6e73;line-height:1.78;margin-bottom:36px;">Ese mismo enfoque analítico y de alto rendimiento lo aplico a cada proyecto digital.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:36px;">
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">📈 Trading activo</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">🤖 IA aplicada</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">🌎 Guatemala · España · Nashville</span>
       </div>
 
-      <!-- 05 Chatbots -->
-      <div data-animate class="card-service">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;">
-          <div style="width:46px;height:46px;background:#fff0ee;border-radius:14px;display:flex;align-items:center;justify-content:center;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:600;color:#d1d1d6;letter-spacing:.06em;">05</span>
+      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        Ver perfil en LinkedIn
+      </a>
+    </div>
+
+    <!-- Right: Photo -->
+    <div style="flex:0 0 auto;width:clamp(260px,30vw,380px);position:relative;" class="mob-hide" data-animate>
+      <div style="position:relative;">
+        <img src="photo-new.png" alt="André Gómez Zenteno"
+             style="position:relative;z-index:1;width:100%;border-radius:28px;object-fit:cover;aspect-ratio:3/4;object-position:top center;box-shadow:0 24px 72px rgba(0,0,0,.12);" />
+        <div style="position:absolute;top:22px;right:-18px;background:#1d1d1f;border-radius:14px;padding:10px 15px;box-shadow:0 8px 30px rgba(0,0,0,.22);z-index:2;display:flex;align-items:center;gap:7px;">
+          <div style="width:8px;height:8px;background:#25D366;border-radius:50%;flex-shrink:0;"></div>
+          <p style="font-size:11px;font-weight:600;color:#fff;white-space:nowrap;">Disponible ahora</p>
         </div>
-        <h3 style="font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:10px;letter-spacing:-.025em;">Chatbots con IA para Negocios</h3>
-        <p style="font-size:14px;color:#6e6e73;line-height:1.65;margin-bottom:26px;">Chatbots inteligentes que atienden a tus clientes 24/7, responden preguntas frecuentes y automatizan la comunicación.</p>
-        <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20los%20Chatbots%20con%20IA"
-           target="_blank" rel="noopener" class="link-consult" style="color:#ef4444;">Consultar →</a>
+        <div style="position:absolute;bottom:-14px;left:-18px;background:#fff;border-radius:16px;padding:11px 16px;box-shadow:0 8px 32px rgba(0,0,0,.1);z-index:2;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:20px;line-height:1;">🌎</span>
+          <div>
+            <p style="font-size:11px;font-weight:700;color:#1d1d1f;line-height:1.3;">GT · España · Nashville</p>
+            <p style="font-size:10px;color:#6e6e73;margin-top:2px;">Remoto · Global</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══ PROYECTOS ══ -->
-<section id="proyectos" style="background:#fff;padding:100px 6%;" class="mob-pad">
+<section id="proyectos" style="background:#f5f5f7;padding:100px 6%;" class="mob-pad">
   <div style="max-width:1240px;margin:0 auto;">
     <div data-animate style="margin-bottom:60px;">
       <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Proyectos</p>
@@ -334,61 +375,6 @@
   </div>
 </section>
 
-<!-- ══ SOBRE MÍ ══ -->
-<section id="sobre-mi" style="background:#f5f5f7;padding:100px 6%;" class="mob-pad">
-  <div style="max-width:1240px;margin:0 auto;display:flex;gap:80px;align-items:center;" class="mob-col">
-    <div style="flex:1;min-width:0;" data-animate>
-      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Sobre mí</p>
-      <h2 style="font-size:clamp(30px,3.6vw,48px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.06;margin-bottom:24px;">Tecnología, mercados y<br>mentalidad de alto rendimiento</h2>
-      <p style="font-size:16px;color:#6e6e73;line-height:1.78;margin-bottom:14px;">Soy André. Combino tecnología, mercados financieros y mentalidad competitiva. Opero activamente en mercados bursátiles y criptoactivos.</p>
-      <p style="font-size:16px;color:#6e6e73;line-height:1.78;margin-bottom:36px;">Ese mismo enfoque analítico y de alto rendimiento lo aplico a cada proyecto digital.</p>
-
-      <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:36px;">
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#fff;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">📈 Trading activo</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#fff;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">🤖 IA aplicada</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#fff;border:1px solid #e0e0e8;padding:7px 16px;border-radius:100px;">🌎 Guatemala · España · Nashville</span>
-      </div>
-
-      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        Ver perfil en LinkedIn
-      </a>
-    </div>
-
-    <!-- Right: 4-tile grid -->
-    <div style="flex:0 0 380px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:340px;" class="mob-hide" data-animate>
-      <div style="background:#fff;border-radius:20px;padding:24px 22px;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;justify-content:space-between;">
-        <span style="font-size:28px;line-height:1;">📈</span>
-        <div>
-          <p style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:4px;letter-spacing:-.02em;">Mercados</p>
-          <p style="font-size:12px;color:#6e6e73;line-height:1.5;">Trading en acciones y cripto</p>
-        </div>
-      </div>
-      <div style="background:#1d1d1f;border-radius:20px;padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between;">
-        <span style="font-size:28px;line-height:1;">🌍</span>
-        <div>
-          <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-.02em;">Global</p>
-          <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;">GT · España · Nashville</p>
-        </div>
-      </div>
-      <div style="background:#0071E3;border-radius:20px;padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between;">
-        <span style="font-size:28px;line-height:1;">🤖</span>
-        <div>
-          <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-.02em;">IA &amp; Tech</p>
-          <p style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.5;">Automatización digital</p>
-        </div>
-      </div>
-      <div style="background:#fff;border-radius:20px;padding:24px 22px;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;justify-content:space-between;">
-        <span style="font-size:28px;line-height:1;">🚀</span>
-        <div>
-          <p style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:4px;letter-spacing:-.02em;">Proyectos</p>
-          <p style="font-size:12px;color:#6e6e73;line-height:1.5;">Webs, bots y automatizaciones</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ CONTACTO (BACKEND FORM) ══ -->
 <section id="contacto" style="background:#fff;padding:100px 6%;" class="mob-pad">
   <div style="max-width:780px;margin:0 auto;">
@@ -398,9 +384,6 @@
       <p style="font-size:16px;color:#6e6e73;line-height:1.7;">Respondo en menos de 24 horas. También puedes escribirme directamente por WhatsApp.</p>
     </div>
 
-    <!-- Contact Form — powered by Formspree -->
-    <!-- SETUP: Go to https://formspree.io, create a free account, create a new form,
-         and replace YOUR_FORM_ID below with your actual form ID (e.g. xyzabcde) -->
     <form id="contact-form" data-animate
           action="https://formspree.io/f/YOUR_FORM_ID"
           method="POST"
@@ -448,12 +431,10 @@
       </div>
     </form>
 
-    <!-- Success message (shown after submission) -->
     <div class="form-success" id="form-success">
       <p>✅ ¡Mensaje enviado! Te respondo en menos de 24 horas.</p>
     </div>
 
-    <!-- Alternative contact -->
     <div data-animate style="margin-top:40px;padding-top:32px;border-top:1px solid #e8e8ed;display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
       <p style="font-size:14px;color:#6e6e73;">Prefiero respuesta rápida:</p>
       <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
@@ -542,6 +523,55 @@
     observer.observe(el);
   });
 
+  // ── Carousel ──
+  const track = document.getElementById('carousel-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const dotsContainer = document.getElementById('carousel-dots');
+
+  const cards = track.querySelectorAll('.card-service, .card-service-dark');
+  const cardCount = cards.length;
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:all .2s;padding:0;background:'+(i===0?'#0071E3':'#d1d1d6');
+    dot.setAttribute('aria-label', 'Ir a servicio '+(i+1));
+    dot.addEventListener('click', () => scrollToCard(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function updateDots() {
+    const scrollLeft = track.scrollLeft;
+    const cardWidth = cards[0].offsetWidth + 16;
+    const activeIdx = Math.round(scrollLeft / cardWidth);
+    dotsContainer.querySelectorAll('button').forEach((d, i) => {
+      d.style.background = i === activeIdx ? '#0071E3' : '#d1d1d6';
+      d.style.width = i === activeIdx ? '20px' : '8px';
+      d.style.borderRadius = '100px';
+    });
+  }
+
+  function scrollToCard(idx) {
+    const cardWidth = cards[0].offsetWidth + 16;
+    track.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    const cardWidth = cards[0].offsetWidth + 16;
+    const current = Math.round(track.scrollLeft / cardWidth);
+    scrollToCard(Math.max(0, current - 1));
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const cardWidth = cards[0].offsetWidth + 16;
+    const current = Math.round(track.scrollLeft / cardWidth);
+    scrollToCard(Math.min(cardCount - 1, current + 1));
+  });
+
+  track.addEventListener('scroll', updateDots, { passive: true });
+  updateDots();
+
   // ── Contact form: Formspree AJAX submission ──
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -551,7 +581,6 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Check if Formspree ID is configured
     if (form.action.includes('YOUR_FORM_ID')) {
       formError.style.display = 'block';
       document.getElementById('form-error-msg').textContent =
