@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="André Gómez Zenteno — Tecnología, automatización y estrategia financiera al servicio de tu negocio.">
-  <title>André Gómez Zenteno</title>
+  <meta name="description" content="André Gómez Zenteno — CV virtual interactivo. Desarrollo de software asistido por IA, mercados financieros y trading.">
+  <title>André Gómez Zenteno — CV</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -18,410 +18,490 @@
     img{display:block;max-width:100%}
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes imgIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-    @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.4)}55%{box-shadow:0 4px 24px rgba(37,211,102,.4),0 0 0 14px rgba(37,211,102,0)}}
     @keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.25}}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-    /* ── Scroll animations (CSS-driven, GPU compositor) ── */
-    [data-animate]{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.16,1,0.3,1);will-change:transform,opacity;}
+    /* ── Scroll reveal ── */
+    [data-animate]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(0.16,1,0.3,1);will-change:transform,opacity;}
     [data-animate].is-visible{opacity:1;transform:translateY(0);will-change:auto;}
-
-    /* ── Navbar scrolled state ── */
-    #main-nav.scrolled{background:rgba(255,255,255,0.9)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;box-shadow:0 1px 0 rgba(0,0,0,0.07)!important;}
-    #main-nav{transition:background .3s,box-shadow .3s;will-change:transform;}
-
-    /* ── WA float ── */
-    .wa-float{position:fixed;bottom:24px;right:24px;z-index:500;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:waPulse 2.8s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent;}
-    .wa-float:active{transform:scale(.93)}
 
     /* ── Navbar ── */
     #main-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;transition:background .3s,box-shadow .3s;}
-
+    #main-nav.scrolled{background:rgba(255,255,255,0.9)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;box-shadow:0 1px 0 rgba(0,0,0,0.07)!important;}
     .nav-link{font-size:14px;font-weight:500;color:#6e6e73;transition:color .2s;padding:8px 0;}
     .nav-link:hover{color:#1d1d1f}
-
-    .btn-nav-wa{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#fff;background:#25D366;padding:9px 16px;border-radius:100px;transition:all .2s;-webkit-tap-highlight-color:transparent;}
 
     /* ── Buttons ── */
     .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#0071E3;color:#fff;font-size:16px;font-weight:700;padding:16px 32px;border-radius:100px;transition:all .25s;-webkit-tap-highlight-color:transparent;}
     .btn-primary:active{transform:scale(.97)}
-
-    .btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#25D366;color:#fff;font-size:16px;font-weight:700;padding:16px 32px;border-radius:100px;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:all .25s;-webkit-tap-highlight-color:transparent;}
-    .btn-wa:active{transform:scale(.97)}
-
     .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:#1d1d1f;border:1.5px solid rgba(29,29,31,.15);padding:14px 28px;border-radius:100px;transition:all .2s;-webkit-tap-highlight-color:transparent;}
     .btn-ghost:active{background:#f5f5f7}
-
     .btn-linkedin{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:#fff;background:#0077B5;padding:14px 26px;border-radius:100px;transition:all .22s;-webkit-tap-highlight-color:transparent;}
     .btn-linkedin:active{transform:scale(.97)}
 
-    .btn-cta-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-size:16px;font-weight:700;padding:16px 34px;border-radius:100px;box-shadow:0 6px 32px rgba(37,211,102,.35);transition:all .25s;-webkit-tap-highlight-color:transparent;}
-    .btn-cta-wa:active{transform:scale(.97)}
+    /* ── Scroll cue ── */
+    .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.4;}
+    .scroll-cue svg{animation:bounce 1.8s ease-in-out infinite;}
 
-    /* ── Service carousel ── */
-    .svc-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-    .svc-tabs::-webkit-scrollbar{display:none;}
-    .svc-tab{flex:0 0 auto;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;border:1.5px solid rgba(0,0,0,.1);background:#fff;color:#6e6e73;cursor:pointer;transition:all .2s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-    .svc-tab.active{color:#fff;border-color:transparent;}
+    /* ── Timeline (experiencia / educación) ── */
+    .tl-item{position:relative;padding-left:32px;border-left:2px solid #e8e8ed;padding-bottom:36px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+    .tl-item:last-child{border-left:2px solid transparent;padding-bottom:0;}
+    .tl-dot{position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:#0071E3;border:3px solid #fff;box-shadow:0 0 0 2px #0071E3;}
+    .tl-detail{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(0.16,1,0.3,1),opacity .3s ease,margin-top .4s;opacity:0;}
+    .tl-item.open .tl-detail{max-height:220px;opacity:1;margin-top:10px;}
+    .tl-toggle-icon{transition:transform .3s;flex-shrink:0;}
+    .tl-item.open .tl-toggle-icon{transform:rotate(45deg);}
+    @media(hover:hover){
+      .tl-item:hover .tl-detail{max-height:220px;opacity:1;margin-top:10px;}
+      .tl-item:hover .tl-toggle-icon{transform:rotate(45deg);}
+    }
 
-    .carousel-outer{position:relative;overflow:hidden;border-radius:28px;}
-    .carousel-track{display:flex;transition:transform .45s cubic-bezier(0.25,1,0.5,1);}
+    /* ── Project flip cards ── */
+    .proj-card{position:relative;border-radius:24px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:260px;}
+    .proj-face{position:absolute;inset:0;padding:26px 26px;display:flex;flex-direction:column;justify-content:flex-end;transition:opacity .35s ease;}
+    .proj-front{opacity:1;}
+    .proj-back{opacity:0;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);justify-content:center;}
+    .proj-card.open .proj-front{opacity:0;pointer-events:none;}
+    .proj-card.open .proj-back{opacity:1;}
+    @media(hover:hover){
+      .proj-card:hover .proj-front{opacity:0;}
+      .proj-card:hover .proj-back{opacity:1;}
+    }
+    .proj-tag{font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.85);background:rgba(255,255,255,.1);}
 
-    .svc-card{flex:0 0 100%;min-height:400px;border-radius:28px;padding:40px 36px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
-    .svc-card-bg-icon{position:absolute;bottom:-24px;right:-24px;pointer-events:none;}
-
-    .link-consult{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;padding:12px 22px;border-radius:100px;transition:all .2s;-webkit-tap-highlight-color:transparent;width:fit-content;}
-
-    /* Arrow buttons */
-    .carousel-arrows{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:24px;}
-    .arrow-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(0,0,0,.1);background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;flex-shrink:0;}
-    .arrow-btn:active{transform:scale(.93);box-shadow:0 1px 6px rgba(0,0,0,.08);}
-    .carousel-dots-inner{display:flex;align-items:center;gap:6px;}
-    .cdot{width:7px;height:7px;border-radius:100px;background:#d1d1d6;transition:all .3s;cursor:pointer;}
-    .cdot.active{width:22px;background:#0071E3;}
-
-    /* ── Project cards ── */
-    .card-project{border-radius:24px;overflow:hidden;transition:all .3s;-webkit-tap-highlight-color:transparent;}
-    .card-project:active{transform:scale(.99)}
-
-    .btn-project-serom{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#fff;background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);padding:10px 20px;border-radius:100px;transition:all .2s;}
-    .btn-project-ape{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);padding:10px 20px;border-radius:100px;transition:all .2s;}
-
-    /* ── Contact form ── */
-    .form-group{display:flex;flex-direction:column;gap:7px}
-    .form-label{font-size:13px;font-weight:600;color:#1d1d1f}
-    .form-input{padding:14px 16px;border:1.5px solid #e0e0e8;border-radius:14px;font-family:inherit;font-size:15px;color:#1d1d1f;background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-    .form-input:focus{border-color:#0071E3}
-    .form-input::placeholder{color:#b0b0b8}
-    .form-select{padding:14px 16px;border:1.5px solid #e0e0e8;border-radius:14px;font-family:inherit;font-size:15px;color:#1d1d1f;background:#fff;outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
-    .form-select:focus{border-color:#0071E3}
-    .form-textarea{padding:14px 16px;border:1.5px solid #e0e0e8;border-radius:14px;font-family:inherit;font-size:15px;color:#1d1d1f;background:#fff;outline:none;transition:border-color .2s;resize:none;min-height:130px;-webkit-appearance:none;}
-    .form-textarea:focus{border-color:#0071E3}
-    .form-textarea::placeholder{color:#b0b0b8}
-    .btn-submit{display:flex;align-items:center;justify-content:center;gap:9px;background:#0071E3;color:#fff;font-size:16px;font-weight:700;padding:16px 32px;border-radius:100px;border:none;cursor:pointer;font-family:inherit;transition:all .25s;width:100%;-webkit-tap-highlight-color:transparent;}
-    .btn-submit:disabled{background:#b0b0b8;cursor:not-allowed;}
-    .form-success{display:none;background:#e6faf3;border:1px solid rgba(16,185,129,.3);border-radius:16px;padding:22px 24px;text-align:center;}
-    .form-success p{color:#10b981;font-weight:600;font-size:15px}
-    .form-error{display:none;background:#fff0ee;border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:14px 18px;margin-top:12px;}
-    .form-error p{color:#ef4444;font-size:13px;font-weight:500}
+    /* ── Skills ── */
+    .skill-group{background:#fff;border-radius:22px;padding:26px 24px;}
+    .skill-chip{display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;transition:all .2s;cursor:default;}
+    @media(hover:hover){.skill-chip:hover{border-color:#0071E3;color:#0071E3;transform:translateY(-2px);}}
 
     /* ── Footer ── */
-    .footer-link{font-size:13px;color:rgba(255,255,255,.35);transition:color .2s;}
-    .footer-link-wa:hover{color:#25D366}
+    .footer-link{font-size:13px;color:rgba(255,255,255,.4);transition:color .2s;}
+    .footer-link:hover{color:#fff}
 
-    /* ── Desktop tweaks ── */
-    @media(min-width:768px){
-      .svc-card{min-height:340px;}
-      .mob-hide{display:none!important}
-    }
     @media(max-width:767px){
       .desk-hide{display:none!important}
-      .mob-col{flex-direction:column!important}
       .mob-single{grid-template-columns:1fr!important}
-      .mob-center{text-align:center!important;align-items:center!important;}
-      .mob-full{width:100%!important}
+    }
+    @media(min-width:768px){
+      .mob-hide{display:none!important}
     }
   </style>
 </head>
 <body>
-
-<!-- ══ FLOATING WHATSAPP ══ -->
-<a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
-   target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
 
 <!-- ══ NAVBAR ══ -->
 <nav id="main-nav">
   <a href="#inicio" style="font-size:20px;font-weight:700;letter-spacing:-.04em;color:#1d1d1f;">
     André<span style="color:#0071E3;">.</span>
   </a>
-  <div style="display:flex;gap:24px;align-items:center;" class="desk-hide" id="nav-desktop">
-    <a href="#servicios" class="nav-link">Servicios</a>
+  <div style="display:flex;gap:24px;align-items:center;" class="desk-hide">
     <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+    <a href="#experiencia" class="nav-link">Experiencia</a>
     <a href="#proyectos" class="nav-link">Proyectos</a>
+    <a href="#skills" class="nav-link">Skills</a>
     <a href="#contacto" class="nav-link">Contacto</a>
-    <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
-       target="_blank" rel="noopener" class="btn-nav-wa">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="https://github.com/andregomezzenteno-sudo" target="_blank" rel="noopener" class="btn-ghost mob-hide" style="padding:9px 16px;font-size:13px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.763-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.874.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.48 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.696.825.578C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin" style="padding:9px 16px;font-size:13px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
     </a>
   </div>
-  <!-- Mobile nav CTA -->
-  <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
-     target="_blank" rel="noopener" class="btn-nav-wa mob-hide">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    WA
-  </a>
 </nav>
 
 <!-- ══ HERO ══ -->
 <section id="inicio" style="min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 6% 72px;background:#fff;position:relative;overflow:hidden;">
 
-  <!-- Background blobs -->
   <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:min(700px,140vw);height:min(700px,140vw);background:radial-gradient(circle,rgba(0,113,227,.06) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;"></div>
   <div style="position:absolute;bottom:-5%;right:-10%;width:min(400px,80vw);height:min(400px,80vw);background:radial-gradient(circle,rgba(124,58,237,.05) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;"></div>
 
-  <div style="position:relative;z-index:1;max-width:580px;width:100%;animation:fadeUp .9s .1s ease both;opacity:0;">
+  <div style="position:relative;z-index:1;max-width:600px;width:100%;animation:fadeUp .9s .1s ease both;opacity:0;">
 
-    <!-- Badge -->
-    <div style="display:inline-flex;align-items:center;gap:8px;background:#f0f7ff;border:1px solid rgba(0,113,227,.2);border-radius:100px;padding:8px 18px;margin-bottom:32px;">
+    <img src="photo-new.png" alt="André Gómez Zenteno" style="width:112px;height:112px;border-radius:50%;object-fit:cover;margin:0 auto 24px;border:3px solid #fff;box-shadow:0 8px 30px rgba(0,0,0,.12);" />
+
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#f0f7ff;border:1px solid rgba(0,113,227,.2);border-radius:100px;padding:8px 18px;margin-bottom:28px;">
       <span style="width:7px;height:7px;background:#0071E3;border-radius:50%;flex-shrink:0;animation:dotBlink 2s ease infinite;"></span>
-      <span style="font-size:12px;font-weight:600;color:#0071E3;letter-spacing:.06em;text-transform:uppercase;">Disponible para proyectos</span>
+      <span style="font-size:12px;font-weight:600;color:#0071E3;letter-spacing:.06em;text-transform:uppercase;">Abierto a nuevas oportunidades</span>
     </div>
 
-    <!-- Name -->
-    <h1 style="font-size:clamp(52px,13vw,88px);font-weight:700;line-height:.95;letter-spacing:-.05em;color:#1d1d1f;margin-bottom:8px;">
-      André<br>
-      <span style="font-size:clamp(52px,13vw,88px);color:#0071E3;">Gómez</span><br>
-      Zenteno
+    <h1 style="font-size:clamp(42px,10vw,72px);font-weight:800;line-height:1;letter-spacing:-.05em;color:#1d1d1f;margin-bottom:12px;">
+      André Gómez<br><span style="color:#0071E3;">Zenteno</span>
     </h1>
 
-    <!-- Subtitle -->
-    <p style="font-size:clamp(15px,4vw,18px);color:#6e6e73;line-height:1.65;max-width:420px;margin:28px auto 40px;font-weight:400;">
-      Tecnología, automatización y estrategia financiera al servicio de tu negocio.
+    <p style="font-size:clamp(15px,4vw,18px);color:#6e6e73;line-height:1.6;max-width:480px;margin:20px auto 8px;font-weight:500;">
+      Desarrollo de Software Asistido por IA (Vibe Coding) · Mercados Financieros y Trading · Pensamiento Estratégico
+    </p>
+    <p style="font-size:14px;color:#a1a1a6;margin-bottom:36px;">
+      Cáceres, Extremadura, España · originario de Guatemala
     </p>
 
-    <!-- CTAs -->
-    <div style="display:flex;flex-direction:column;gap:12px;align-items:center;width:100%;max-width:360px;margin:0 auto;">
-      <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
-         target="_blank" rel="noopener" class="btn-wa" style="width:100%;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Hablemos por WhatsApp
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:andregomezzenteno@gmail.com" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+        Contactar
       </a>
-      <a href="#servicios" class="btn-ghost" style="width:100%;">
-        Ver servicios ↓
+      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-ghost">
+        Ver LinkedIn
       </a>
     </div>
-
-    <!-- Location pill -->
-    <div style="display:inline-flex;align-items:center;gap:8px;margin-top:40px;background:#f5f5f7;border-radius:100px;padding:10px 20px;">
-      <span style="font-size:16px;">🌎</span>
-      <span style="font-size:13px;font-weight:500;color:#6e6e73;">Guatemala · España · Nashville</span>
-    </div>
-
   </div>
-</section>
 
-<!-- ══ SERVICIOS ══ -->
-<section id="servicios" style="background:#0a0a0a;padding:80px 5% 90px;">
-  <div style="max-width:640px;margin:0 auto;">
-
-    <!-- Header -->
-    <div style="text-align:center;margin-bottom:36px;" data-animate>
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,162,255,.7);margin-bottom:12px;">Servicios</p>
-      <h2 style="font-size:clamp(26px,7vw,40px);font-weight:700;letter-spacing:-.04em;color:#fff;line-height:1.1;">Lo que puedo<br>hacer por ti</h2>
-    </div>
-
-    <!-- One-word tabs -->
-    <div class="svc-tabs" id="svc-tabs" data-animate style="margin-bottom:28px;padding-left:2px;padding-right:16px;">
-      <button class="svc-tab active" data-idx="0" style="background:#0071E3;color:#fff;border-color:#0071E3;">Web</button>
-      <button class="svc-tab" data-idx="1">IA</button>
-      <button class="svc-tab" data-idx="2">Finanzas</button>
-    </div>
-
-    <!-- Carousel -->
-    <div class="carousel-outer" data-animate>
-      <div class="carousel-track" id="svc-track">
-
-        <!-- 01 Web -->
-        <div class="svc-card" style="background:linear-gradient(145deg,#0d1b2e 0%,#0a1520 100%);border:1px solid rgba(0,113,227,.2);">
-          <div class="svc-card-bg-icon">
-            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.12;filter:blur(3px);"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          </div>
-          <div>
-            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,113,227,.15);border:1px solid rgba(0,113,227,.3);border-radius:100px;padding:6px 14px;margin-bottom:24px;">
-              <div style="width:8px;height:8px;background:#0071E3;border-radius:50%;"></div>
-              <span style="font-size:11px;font-weight:700;color:#60a5fa;letter-spacing:.08em;text-transform:uppercase;">01 — Web</span>
-            </div>
-            <h3 style="font-size:clamp(22px,6vw,30px);font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;">Creación de<br>Páginas Web</h3>
-            <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;max-width:380px;">Sitios modernos, rápidos y optimizados para móvil. Desde landing pages hasta webs completas adaptadas a tu negocio.</p>
-          </div>
-          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20servicio%20de%20Creación%20de%20Páginas%20Web"
-             target="_blank" rel="noopener" class="link-consult" style="background:rgba(0,113,227,.2);border:1px solid rgba(0,113,227,.4);color:#60a5fa;margin-top:32px;">
-            Consultar →
-          </a>
-        </div>
-
-        <!-- 02 IA -->
-        <div class="svc-card" style="background:linear-gradient(145deg,#160d2e 0%,#100820 100%);border:1px solid rgba(124,58,237,.2);">
-          <div class="svc-card-bg-icon">
-            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.14;filter:blur(3px);"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          </div>
-          <div>
-            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);border-radius:100px;padding:6px 14px;margin-bottom:24px;">
-              <div style="width:8px;height:8px;background:#7c3aed;border-radius:50%;"></div>
-              <span style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;">02 — IA</span>
-            </div>
-            <h3 style="font-size:clamp(22px,6vw,30px);font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;">Cursos de IA<br>para Principiantes</h3>
-            <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;max-width:380px;">Aprende a usar Inteligencia Artificial desde cero. Clases prácticas para integrar IA en tu día a día o negocio.</p>
-          </div>
-          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesa%20el%20Curso%20de%20IA"
-             target="_blank" rel="noopener" class="link-consult" style="background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#a78bfa;margin-top:32px;">
-            Consultar →
-          </a>
-        </div>
-
-        <!-- 03 Finanzas -->
-        <div class="svc-card" style="background:linear-gradient(145deg,#001a0f 0%,#001209 100%);border:1px solid rgba(16,185,129,.2);">
-          <div class="svc-card-bg-icon">
-            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.14;filter:blur(3px);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          </div>
-          <div>
-            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:100px;padding:6px 14px;margin-bottom:24px;">
-              <div style="width:8px;height:8px;background:#10b981;border-radius:50%;"></div>
-              <span style="font-size:11px;font-weight:700;color:#34d399;letter-spacing:.08em;text-transform:uppercase;">03 — Finanzas</span>
-            </div>
-            <h3 style="font-size:clamp(22px,6vw,30px);font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;">Finanzas Personales<br>y Mercados</h3>
-            <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;max-width:380px;">Aprende a invertir en bolsa, ETFs y criptoactivos desde cero. Estrategias reales que he aplicado para lograr rentabilidades superiores al 100%.</p>
-          </div>
-          <a href="https://wa.me/34603126012?text=Hola%20André%2C%20me%20interesan%20las%20Finanzas%20Personales"
-             target="_blank" rel="noopener" class="link-consult" style="background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.35);color:#34d399;margin-top:32px;">
-            Consultar →
-          </a>
-        </div>
-
-      </div><!-- /carousel-track -->
-    </div><!-- /carousel-outer -->
-
-    <!-- Arrows + dots -->
-    <div class="carousel-arrows">
-      <button class="arrow-btn" id="svc-prev" aria-label="Anterior">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="carousel-dots-inner" id="svc-dots"></div>
-      <button class="arrow-btn" id="svc-next" aria-label="Siguiente">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-
+  <div class="scroll-cue">
+    <span style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;">Scroll</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
 
 <!-- ══ SOBRE MÍ ══ -->
-<section id="sobre-mi" style="background:#fff;padding:88px 5%;" class="">
-  <div style="max-width:1100px;margin:0 auto;display:flex;gap:72px;align-items:center;flex-wrap:wrap;">
+<section id="sobre-mi" style="background:#fff;padding:96px 5%;">
+  <div style="max-width:720px;margin:0 auto;" data-animate>
+    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Sobre mí</p>
+    <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién sos, y la constancia gana a largo plazo.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 Trader independiente</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 Co-CEO · SEROM A&amp;G</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">💻 Vibe coding</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🥋 MMA & BJJ</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌍 Inglés B2</span>
+    </div>
+  </div>
+</section>
 
-    <!-- Photo -->
-    <div style="flex:0 0 auto;width:clamp(240px,38vw,360px);position:relative;margin:0 auto;" data-animate>
-      <div style="position:relative;">
-        <img src="photo-new.png" alt="André Gómez Zenteno"
-             style="width:100%;border-radius:28px;object-fit:cover;aspect-ratio:3/4;object-position:top center;box-shadow:0 32px 80px rgba(0,0,0,.14);" />
-        <div style="position:absolute;top:18px;right:-14px;background:#1d1d1f;border-radius:14px;padding:10px 14px;box-shadow:0 8px 30px rgba(0,0,0,.22);z-index:2;display:flex;align-items:center;gap:7px;">
-          <div style="width:8px;height:8px;background:#25D366;border-radius:50%;flex-shrink:0;"></div>
-          <p style="font-size:11px;font-weight:600;color:#fff;white-space:nowrap;">Disponible ahora</p>
-        </div>
-        <div style="position:absolute;bottom:-14px;left:-14px;background:#fff;border-radius:16px;padding:10px 14px;box-shadow:0 8px 32px rgba(0,0,0,.1);z-index:2;display:flex;align-items:center;gap:10px;">
-          <span style="font-size:18px;line-height:1;">🌎</span>
+<!-- ══ EXPERIENCIA ══ -->
+<section id="experiencia" style="background:#f5f5f7;padding:96px 5%;">
+  <div style="max-width:720px;margin:0 auto;">
+    <div data-animate style="margin-bottom:48px;">
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:12px;">Experiencia</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;">Recorrido profesional</h2>
+      <p style="font-size:13px;color:#a1a1a6;margin-top:10px;" class="mob-hide">Pasa el ratón por cada tarjeta para ver el detalle.</p>
+      <p style="font-size:13px;color:#a1a1a6;margin-top:10px;" class="desk-hide">Toca cada tarjeta para ver el detalle.</p>
+    </div>
+
+    <div data-animate>
+      <div class="tl-item open" style="background:#fff;border-radius:20px;padding:24px 26px;margin-bottom:16px;margin-left:2px;">
+        <div class="tl-dot"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
           <div>
-            <p style="font-size:11px;font-weight:700;color:#1d1d1f;line-height:1.3;">GT · España · Nashville</p>
-            <p style="font-size:10px;color:#6e6e73;margin-top:2px;">Remoto · Global</p>
+            <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Trader Independiente</h3>
+            <p style="font-size:14px;color:#0071E3;font-weight:600;margin-top:2px;">Autónomo · España</p>
           </div>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">En curso</span>
+        </div>
+        <div class="tl-detail">
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Trading en renta variable y otros instrumentos cotizados con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Mantengo una posición de inversión a largo plazo en criptoactivos, respaldada por análisis macroeconómico y geopolítico.</p>
         </div>
       </div>
     </div>
 
-    <!-- Text -->
-    <div style="flex:1;min-width:min(100%,280px);" data-animate>
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:14px;">Sobre mí</p>
-      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.08;margin-bottom:22px;">Tecnología, mercados<br>y alto rendimiento</h2>
-      <p style="font-size:15px;color:#6e6e73;line-height:1.78;margin-bottom:14px;">Soy André. Combino tecnología, mercados financieros y mentalidad competitiva. Opero activamente en mercados bursátiles y criptoactivos, alcanzando rentabilidades de más del 100%.</p>
-      <p style="font-size:15px;color:#6e6e73;line-height:1.78;margin-bottom:14px;">Soy co-CEO de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio y co-CEO <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
-      <p style="font-size:15px;color:#6e6e73;line-height:1.78;margin-bottom:32px;">Cuento con conocimiento certificado por la <strong style="color:#1d1d1f;font-weight:600;">Universidad de Helsinki</strong> (Finlandia) y aplico ese mismo enfoque analítico a cada proyecto digital.</p>
-
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;">
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 CEO · SEROM A&amp;G</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 +100% rentabilidad</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🤖 IA aplicada</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌎 Remoto Global</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🎓 Univ. Helsinki</span>
+    <div data-animate>
+      <div class="tl-item" style="background:#fff;border-radius:20px;padding:24px 26px;margin-bottom:16px;margin-left:2px;">
+        <div class="tl-dot" style="background:#7c3aed;box-shadow:0 0 0 2px #7c3aed;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+          <div>
+            <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Co-CEO & Cofundador</h3>
+            <p style="font-size:14px;color:#7c3aed;font-weight:600;margin-top:2px;">SEROM Automation & Growth · Autónomo</p>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">2025 — Presente</span>
+        </div>
+        <div class="tl-detail">
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Empresa española de automatización y crecimiento digital, cofundada junto a Gabriel Martínez Bravo. Desarrollo de páginas web, automatización de procesos con formularios/IA y aplicación de agentes inteligentes a negocios reales.</p>
+        </div>
       </div>
-
-      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        Ver perfil en LinkedIn
-      </a>
     </div>
 
+    <div data-animate>
+      <div class="tl-item" style="background:#fff;border-radius:20px;padding:24px 26px;margin-bottom:16px;margin-left:2px;">
+        <div class="tl-dot" style="background:#10b981;box-shadow:0 0 0 2px #10b981;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+          <div>
+            <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Desarrollo de Herramientas Internas</h3>
+            <p style="font-size:14px;color:#10b981;font-weight:600;margin-top:2px;">Negocio Familiar · Estados Unidos (remoto)</p>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">2022 — Presente</span>
+        </div>
+        <div class="tl-detail">
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Diseñé y construí un sistema de gestión de inventario, al que integré un agente de IA (API de Claude) capaz de leer, analizar y ejecutar acciones sobre el sistema con confirmación explícita del usuario y registro de cada acción, junto con una app de reserva de citas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-animate>
+      <div class="tl-item" style="background:#fff;border-radius:20px;padding:24px 26px;margin-bottom:16px;margin-left:2px;">
+        <div class="tl-dot" style="background:#f59e0b;box-shadow:0 0 0 2px #f59e0b;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+          <div>
+            <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Estudiante en Prácticas Administrativas</h3>
+            <p style="font-size:14px;color:#f59e0b;font-weight:600;margin-top:2px;">Universidad Popular de Villanueva de la Serena · España</p>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">Mar — Abr 2026</span>
+        </div>
+        <div class="tl-detail">
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Apoyo en organización documental, atención al público y coordinación de actividades formativas en una institución pública.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-animate>
+      <div class="tl-item" style="background:#fff;border-radius:20px;padding:24px 26px;margin-bottom:16px;margin-left:2px;">
+        <div class="tl-dot" style="background:#a1a1a6;box-shadow:0 0 0 2px #a1a1a6;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+          <div>
+            <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Representante de Atención al Cliente</h3>
+            <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;">Allied Global (campaña de telecomunicaciones) · Guatemala</p>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">2023 (8 meses)</span>
+        </div>
+        <div class="tl-detail">
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Atención telefónica a clientes de una compañía de telecomunicaciones en un entorno BPO de ritmo exigente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-animate>
+      <div class="tl-item" style="background:#fff;border-radius:20px;padding:24px 26px;margin-left:2px;">
+        <div class="tl-dot" style="background:#a1a1a6;box-shadow:0 0 0 2px #a1a1a6;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+          <div>
+            <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Representante de Atención al Cliente</h3>
+            <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;">Citi · Ciudad de Guatemala, Guatemala</p>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">Feb — Jul 2022</span>
+        </div>
+        <div class="tl-detail">
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Atención directa al cliente dentro de una institución bancaria global, desarrollando disciplina operativa y comprensión práctica de procesos financieros regulados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCACIÓN ══ -->
+<section id="educacion" style="background:#fff;padding:96px 5%;">
+  <div style="max-width:720px;margin:0 auto;">
+    <div data-animate style="margin-bottom:48px;">
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:12px;">Educación</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;">Formación</h2>
+    </div>
+
+    <div data-animate style="display:grid;gap:14px;">
+      <div style="background:#f5f5f7;border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">I.E.S. San José</h3>
+          <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Ciclo Formativo de Grado Superior — Finanzas y Administración</p>
+        </div>
+        <span style="font-size:12px;font-weight:600;color:#0071E3;background:#f0f7ff;padding:5px 12px;border-radius:100px;white-space:nowrap;">2025 — 2027</span>
+      </div>
+      <div style="background:#f5f5f7;border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">Universidad Rafael Landívar</h3>
+          <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Licenciatura en Economía Empresarial — Finanzas y Mercados Financieros</p>
+        </div>
+        <span style="font-size:12px;font-weight:600;color:#0071E3;background:#f0f7ff;padding:5px 12px;border-radius:100px;white-space:nowrap;">2023</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTIFICACIONES ══ -->
+<section id="certificaciones" style="background:#f5f5f7;padding:96px 5%;">
+  <div style="max-width:720px;margin:0 auto;">
+    <div data-animate style="margin-bottom:44px;">
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:12px;">Certificaciones</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;">Formación complementaria</h2>
+    </div>
+    <div data-animate style="display:grid;gap:12px;margin-bottom:20px;">
+      <div style="background:#fff;border-radius:16px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:14px;font-weight:600;color:#1d1d1f;">CS50's Introduction to Artificial Intelligence with Python</span>
+        <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Universidad de Harvard</span>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:14px;font-weight:600;color:#1d1d1f;">Masterclass in Fintech</span>
+        <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">CFTE</span>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:14px;font-weight:600;color:#1d1d1f;">Elements of AI</span>
+        <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Universidad de Helsinki / MinnaLearn</span>
+      </div>
+    </div>
+    <div data-animate style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span style="font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;">Career Essentials in Generative AI — Microsoft & LinkedIn</span>
+      <span style="font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;">Claude Code 101 — Anthropic</span>
+      <span style="font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;">Claude 101 — Anthropic</span>
+      <span style="font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;">What Is Generative AI? — LinkedIn Learning</span>
+    </div>
   </div>
 </section>
 
 <!-- ══ PROYECTOS ══ -->
-<section id="proyectos" style="background:#f5f5f7;padding:88px 5%;">
-  <div style="max-width:900px;margin:0 auto;">
+<section id="proyectos" style="background:#fff;padding:96px 5%;">
+  <div style="max-width:1000px;margin:0 auto;">
     <div data-animate style="margin-bottom:48px;text-align:center;">
       <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:12px;">Proyectos</p>
-      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;">Lo que he construido</h2>
+      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;margin-bottom:10px;">Lo que he construido</h2>
+      <p style="font-size:13px;color:#a1a1a6;">Pasa el ratón (o toca en móvil) para ver el detalle técnico de cada proyecto.</p>
     </div>
 
-    <!-- VERAPAZ EXPRESS — proyecto destacado, ancho completo -->
-    <div data-animate class="card-project" style="background:linear-gradient(145deg,#001525 0%,#001020 100%);border:1px solid rgba(0,113,227,.25);margin-bottom:16px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:12px;left:28px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(0,113,227,.2);border:1px solid rgba(0,113,227,.4);border-radius:100px;padding:4px 12px;">
-        <div style="width:6px;height:6px;background:#0071E3;border-radius:50%;"></div>
-        <span style="font-size:10px;font-weight:700;color:#60a5fa;letter-spacing:.1em;text-transform:uppercase;">Proyecto destacado</span>
-      </div>
-      <div style="height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 0%,rgba(0,113,227,.35) 0%,transparent 65%);pointer-events:none;"></div>
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 100%,rgba(0,113,227,.15) 0%,transparent 55%);pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;text-align:center;">
-          <p style="font-size:32px;font-weight:900;color:#fff;letter-spacing:-.05em;line-height:1;margin-bottom:8px;">Verapaz<span style="color:#0071E3;">.</span></p>
-          <p style="font-family:monospace;font-size:10px;font-weight:600;color:rgba(96,165,250,.55);letter-spacing:.14em;text-transform:uppercase;">verapaz.pages.dev</p>
-        </div>
-      </div>
-      <div style="padding:24px 28px 30px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:220px;">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-            <span style="font-size:10px;font-weight:600;color:rgba(96,165,250,.9);background:rgba(0,113,227,.15);border:1px solid rgba(0,113,227,.3);padding:3px 10px;border-radius:100px;">Páginas Web</span>
-            <span style="font-size:10px;font-weight:600;color:rgba(96,165,250,.9);background:rgba(0,113,227,.15);border:1px solid rgba(0,113,227,.3);padding:3px 10px;border-radius:100px;">Diseño Moderno</span>
-            <span style="font-size:10px;font-weight:600;color:rgba(96,165,250,.9);background:rgba(0,113,227,.15);border:1px solid rgba(0,113,227,.3);padding:3px 10px;border-radius:100px;">Mobile-First</span>
+    <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;">Proyectos técnicos</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:56px;" class="mob-single">
+
+      <div data-animate class="proj-card" style="grid-column:1/-1;background:linear-gradient(145deg,#001525 0%,#001020 100%);">
+        <div class="proj-face proj-front">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">2026 · JavaScript vanilla</span><span class="proj-tag">Cloudflare Workers</span>
           </div>
-          <h3 style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:8px;">Verapaz Express</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;">Landing page profesional para negocio de transportes. Diseño moderno, rápido y optimizado para móvil.</p>
+          <h3 style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">PathFolio</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.55);">Cuestionario bilingüe de perfil de inversión, con backtesting contra precios históricos reales.</p>
         </div>
-        <a href="https://verapaz.pages.dev" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#0071E3;color:#fff;font-size:13px;font-weight:700;padding:12px 22px;border-radius:100px;text-decoration:none;white-space:nowrap;flex-shrink:0;margin-top:auto;">Ver proyecto ↗</a>
+        <div class="proj-back" style="padding:32px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+            <span class="proj-tag">JavaScript vanilla</span><span class="proj-tag">Cloudflare Workers</span><span class="proj-tag">298 tests en CI</span>
+          </div>
+          <p style="font-size:14px;color:#fff;line-height:1.7;max-width:560px;margin-bottom:14px;">Cuestionario bilingüe (ES/EN, 27 preguntas con ramificación condicional) que asigna una cartera de ejemplo entre 20 instrumentos reales y la contrasta contra precios históricos, con conversión EUR/USD día a día, comisiones e inflación. Credenciales de API retiradas a un proxy propio en Cloudflare Workers con listas blancas de símbolos y orígenes; 298 aserciones de prueba automatizadas en CI en cada push, cero dependencias de producción.</p>
+          <a href="https://github.com/andregomezzenteno-sudo/pathfolio" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Ver en GitHub ↗</a>
+        </div>
       </div>
+
+      <div data-animate class="proj-card" style="background:#06060E;">
+        <div class="proj-face proj-front">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">2026 · JavaScript</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">trading-backtester</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);">Backtester de cruce de medias móviles con métricas de riesgo estándar.</p>
+        </div>
+        <div class="proj-back" style="padding:26px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">Sharpe / Sortino</span><span class="proj-tag">Cloudflare Workers</span>
+          </div>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Backtester de cruce de medias móviles sobre cripto, acciones, índices y materias primas, sin sesgo de anticipación, con métricas Sharpe/Sortino/drawdown. Incluye simulador de posiciones apalancadas con liquidación de margen real y comparador de estructuras evergreen/private equity con modelo académico de appraisal-smoothing.</p>
+          <a href="https://github.com/andregomezzenteno-sudo/trading-backtester" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Ver en GitHub ↗</a>
+        </div>
+      </div>
+
+      <div data-animate class="proj-card" style="background:#0a0a0a;">
+        <div class="proj-face proj-front">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">2026 · Python</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">Portfolio Drift Monitor</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);">Supervisión de carteras para banca privada: desviación y riesgo de concentración.</p>
+        </div>
+        <div class="proj-back" style="padding:26px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">FastAPI</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">CI/CD</span>
+          </div>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Sistema de supervisión de carteras que detecta desviación de asignación y riesgo de concentración en 40 carteras simuladas mediante SQL avanzado (funciones de ventana, gaps-and-islands). Motor de reglas determinista y auditable para el cálculo de objetivos de asignación — sin caja negra ni LLM en la decisión — con 10 tests unitarios y CI/CD (GitHub Actions).</p>
+          <a href="https://github.com/andregomezzenteno-sudo/portfolio-drift-monitor" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Ver en GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;">Proyectos web</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
+
+      <div data-animate class="proj-card" style="grid-column:1/-1;background:linear-gradient(145deg,#001525 0%,#001020 100%);">
+        <div class="proj-face proj-front">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">Web</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">Verapaz Express</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);">Landing page para negocio de transportes.</p>
+        </div>
+        <div class="proj-back" style="padding:26px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">Diseño moderno</span><span class="proj-tag">Mobile-first</span>
+          </div>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Diseño y desarrollo de sitio rápido y optimizado para móvil.</p>
+          <a href="https://verapaz.pages.dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Ver proyecto ↗</a>
+        </div>
+      </div>
+
+      <div data-animate class="proj-card" style="background:#06060E;">
+        <div class="proj-face proj-front">
+          <img src="serom-logo.png" alt="Serom A&G" style="height:26px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:12px;" />
+          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">SEROM A&amp;G</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);">Landing premium con estética oscura y automatización.</p>
+        </div>
+        <div class="proj-back" style="padding:26px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">Automatización</span><span class="proj-tag">Dark design</span>
+          </div>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Web de la empresa que cofundo con Gabriel Martínez Bravo — partículas animadas y formulario multi-paso.</p>
+          <a href="https://seromautomationgrowth.es" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#a78bfa;">Ver proyecto ↗</a>
+        </div>
+      </div>
+
+      <div data-animate class="proj-card" style="background:#0a0a0a;">
+        <div class="proj-face proj-front">
+          <p style="font-size:24px;font-weight:300;color:#fff;font-family:Georgia,'Times New Roman',serif;font-style:italic;margin-bottom:12px;">дрЭ</p>
+          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">All Pain Ends</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);">Marca personal editorial minimalista.</p>
+        </div>
+        <div class="proj-back" style="padding:26px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <span class="proj-tag">Branding</span><span class="proj-tag">ES/EN</span>
+          </div>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Diseño editorial minimalista con toggle de idioma.</p>
+          <a href="https://allpainends.pages.dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:rgba(255,255,255,.8);">Ver proyecto ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills" style="background:#f5f5f7;padding:96px 5%;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div data-animate style="margin-bottom:44px;text-align:center;">
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:12px;">Skills</p>
+      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;">Lo que domino</h2>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
-      <!-- SEROM A&G -->
-      <div data-animate class="card-project" style="background:#06060E;border:1px solid rgba(124,58,237,.18);">
-        <div style="height:180px;background:linear-gradient(145deg,#06060E 0%,#0d0b1a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(124,58,237,.4) 0%,transparent 60%);pointer-events:none;"></div>
-          <div style="position:relative;z-index:1;text-align:center;">
-            <img src="serom-logo.png" alt="Serom A&G" style="height:34px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin:0 auto 10px;" />
-            <p style="font-family:monospace;font-size:10px;font-weight:600;color:rgba(167,139,250,.6);letter-spacing:.14em;text-transform:uppercase;">seromautomationgrowth.es</p>
-          </div>
-        </div>
-        <div style="padding:28px 28px 30px;">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-            <span style="font-size:10px;font-weight:600;color:rgba(167,139,250,.85);background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.28);padding:3px 10px;border-radius:100px;">Automatización</span>
-            <span style="font-size:10px;font-weight:600;color:rgba(167,139,250,.85);background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.28);padding:3px 10px;border-radius:100px;">Dark Design</span>
-          </div>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:8px;">SEROM A&amp;G</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:22px;">Landing page premium con estética oscura, partículas animadas y formulario multi-paso.</p>
-          <a href="https://seromautomationgrowth.es" target="_blank" rel="noopener" class="btn-project-serom">Ver proyecto ↗</a>
+      <div data-animate class="skill-group">
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Financiero</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="skill-chip">Trading en renta variable</span>
+          <span class="skill-chip">Inversión largo plazo en cripto</span>
+          <span class="skill-chip">Sharpe / Sortino / drawdown</span>
+          <span class="skill-chip">Análisis macroeconómico</span>
         </div>
       </div>
-
-      <!-- ALL PAIN ENDS -->
-      <div data-animate class="card-project" style="background:#0a0a0a;border:1px solid rgba(255,255,255,.08);">
-        <div style="height:180px;background:linear-gradient(145deg,#111 0%,#0a0a0a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(255,255,255,.07) 0%,transparent 60%);pointer-events:none;"></div>
-          <div style="position:relative;z-index:1;text-align:center;">
-            <p style="font-size:38px;font-weight:300;color:#fff;letter-spacing:-.04em;font-family:Georgia,'Times New Roman',serif;font-style:italic;margin-bottom:8px;line-height:1;">дрЭ</p>
-            <p style="font-family:monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.14em;text-transform:uppercase;">allpainends.pages.dev</p>
-          </div>
+      <div data-animate class="skill-group">
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Técnico</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">SQL (window functions)</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">FastAPI</span>
+          <span class="skill-chip">PostgreSQL</span>
+          <span class="skill-chip">Git/GitHub · CI/CD</span>
         </div>
-        <div style="padding:28px 28px 30px;">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-            <span style="font-size:10px;font-weight:600;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:3px 10px;border-radius:100px;">Marca Personal</span>
-            <span style="font-size:10px;font-weight:600;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:3px 10px;border-radius:100px;">Minimal</span>
-          </div>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:8px;">дрЭ — All Pain Ends</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:22px;">Marca personal con diseño editorial minimalista y toggle de idioma ES/EN.</p>
-          <a href="https://allpainends.pages.dev" target="_blank" rel="noopener" class="btn-project-ape">Ver proyecto ↗</a>
+      </div>
+      <div data-animate class="skill-group">
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Desarrollo asistido por IA</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="skill-chip">Claude Code</span>
+          <span class="skill-chip">Integración API Claude</span>
+          <span class="skill-chip">Flujos agénticos</span>
+          <span class="skill-chip">Vibe coding</span>
+        </div>
+      </div>
+      <div data-animate class="skill-group">
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Transversales & Idiomas</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="skill-chip">Pensamiento estratégico</span>
+          <span class="skill-chip">Disciplina bajo presión</span>
+          <span class="skill-chip">Español — nativo</span>
+          <span class="skill-chip">Inglés — B2</span>
         </div>
       </div>
     </div>
@@ -429,88 +509,25 @@
 </section>
 
 <!-- ══ CONTACTO ══ -->
-<section id="contacto" style="background:#fff;padding:88px 5%;">
-  <div style="max-width:620px;margin:0 auto;">
-    <div data-animate style="margin-bottom:44px;text-align:center;">
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0071E3;margin-bottom:12px;">Contacto</p>
-      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;margin-bottom:14px;">Cuéntame tu proyecto</h2>
-      <p style="font-size:15px;color:#6e6e73;line-height:1.65;">Respondo en menos de 24 horas. También puedes escribirme por WhatsApp.</p>
-    </div>
-
-    <form id="contact-form" data-animate
-          action="#"
-          method="POST"
-          style="display:flex;flex-direction:column;gap:16px;">
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="mob-single">
-        <div class="form-group">
-          <label class="form-label" for="name">Nombre completo</label>
-          <input class="form-input" type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="service">Servicio de interés</label>
-        <select class="form-select" id="service" name="service" required>
-          <option value="" disabled selected>Selecciona un servicio...</option>
-          <option value="web">🌐 Creación de Páginas Web</option>
-          <option value="ia">🤖 Cursos de IA para Principiantes</option>
-          <option value="finanzas">📈 Finanzas Personales y Mercados</option>
-          <option value="otro">Otro / Consulta general</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="message">Cuéntame más</label>
-        <textarea class="form-textarea" id="message" name="message"
-                  placeholder="Describe tu proyecto, presupuesto aproximado, plazos..." required></textarea>
-      </div>
-
-      <input type="hidden" name="_subject" value="Nuevo contacto desde andreGomezZenteno.com">
-      <input type="text" name="_gotcha" style="display:none">
-
-      <div>
-        <button type="submit" class="btn-submit" id="submit-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Enviar mensaje
-        </button>
-        <div class="form-error" id="form-error"><p id="form-error-msg">Algo salió mal. Intenta de nuevo o escríbeme por WhatsApp.</p></div>
-      </div>
-    </form>
-
-    <div class="form-success" id="form-success">
-      <p>✅ ¡Mensaje enviado! Te respondo en menos de 24 horas.</p>
-    </div>
-
-    <div data-animate style="margin-top:36px;padding-top:28px;border-top:1px solid #e8e8ed;display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center;">
-      <p style="font-size:14px;color:#6e6e73;">Prefiero respuesta rápida:</p>
-      <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
-         target="_blank" rel="noopener" class="btn-wa" style="font-size:14px;padding:12px 22px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp directo
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA FINAL ══ -->
-<section style="background:#1d1d1f;padding:100px 5%;text-align:center;position:relative;overflow:hidden;">
+<section id="contacto" style="background:#1d1d1f;padding:110px 5%;text-align:center;position:relative;overflow:hidden;">
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,140vw);height:min(420px,84vw);background:radial-gradient(ellipse,rgba(0,113,227,.15) 0%,transparent 65%);pointer-events:none;"></div>
   <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;" data-animate>
-    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,162,255,.7);margin-bottom:16px;">Hablemos</p>
-    <h2 style="font-size:clamp(30px,9vw,56px);font-weight:700;letter-spacing:-.045em;color:#fff;line-height:1.03;margin-bottom:20px;">¿Listo para<br>empezar?</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:40px;font-weight:300;">Cuéntame tu proyecto. Respondo en menos de 24 horas.</p>
+    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,162,255,.7);margin-bottom:16px;">Contacto</p>
+    <h2 style="font-size:clamp(30px,9vw,52px);font-weight:700;letter-spacing:-.045em;color:#fff;line-height:1.05;margin-bottom:20px;">Hablemos</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:40px;font-weight:300;">Abierto a oportunidades en fintech, IA aplicada y mercados financieros.</p>
     <div style="display:flex;flex-direction:column;gap:12px;align-items:center;max-width:340px;margin:0 auto;">
-      <a href="https://wa.me/34603126012?text=Hola%20André%2C%20vi%20tu%20página%20y%20me%20interesa%20saber%20más%20sobre%20tus%20servicios"
-         target="_blank" rel="noopener" class="btn-cta-wa" style="width:100%;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Escribir por WhatsApp
+      <a href="mailto:andregomezzenteno@gmail.com" class="btn-primary" style="width:100%;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+        andregomezzenteno@gmail.com
       </a>
-      <a href="tel:+34603126012" style="font-size:15px;font-weight:500;color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;">+34 603 126 012</a>
+      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin" style="width:100%;justify-content:center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Conectar en LinkedIn
+      </a>
+      <a href="https://github.com/andregomezzenteno-sudo" target="_blank" rel="noopener" class="btn-ghost" style="width:100%;border-color:rgba(255,255,255,.25);color:#fff;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.763-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.874.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.48 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.696.825.578C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        Ver GitHub
+      </a>
     </div>
   </div>
 </section>
@@ -522,14 +539,13 @@
   </a>
   <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
     <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-    <a href="https://wa.me/34603126012" target="_blank" rel="noopener" class="footer-link footer-link-wa">WhatsApp</a>
-    <span style="font-size:13px;color:rgba(255,255,255,.2);">+34 603 126 012</span>
+    <a href="https://github.com/andregomezzenteno-sudo" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+    <a href="mailto:andregomezzenteno@gmail.com" class="footer-link">Email</a>
   </div>
-  <p style="font-size:12px;color:rgba(255,255,255,.18);">© 2025 André Gómez Zenteno</p>
+  <p style="font-size:12px;color:rgba(255,255,255,.18);">© 2026 André Gómez Zenteno</p>
 </footer>
 
 <script>
-  // ── Navbar glass (class toggle, no style mutations per scroll) ──
   const nav = document.getElementById('main-nav');
   let lastScrolled = false;
   window.addEventListener('scroll', () => {
@@ -540,7 +556,6 @@
     }
   }, { passive: true });
 
-  // ── Scroll animations (class-based, styles stay in CSS) ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -558,126 +573,24 @@
 
   let animIdx = 0;
   document.querySelectorAll('[data-animate]').forEach((el) => {
-    el.dataset.animDelay = String(animIdx * 70);
+    el.dataset.animDelay = String(animIdx * 60);
     animIdx++;
     observer.observe(el);
   });
 
-  // ── Service Carousel ──
-  const track = document.getElementById('svc-track');
-  const tabs = document.querySelectorAll('.svc-tab');
-  const dotsEl = document.getElementById('svc-dots');
-  const prevBtn = document.getElementById('svc-prev');
-  const nextBtn = document.getElementById('svc-next');
-  const cards = track.querySelectorAll('.svc-card');
-  const total = cards.length;
-  let current = 0;
-
-  const tabColors = ['#0071E3','#7c3aed','#f59e0b','#10b981','#ef4444'];
-
-  // Build dots
-  cards.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'cdot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Servicio ' + (i + 1));
-    d.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(d);
+  // ── Tap-to-toggle for timeline & project cards (mobile) ──
+  document.querySelectorAll('.tl-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.tl-item.open').forEach((o) => o.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
   });
 
-  function goTo(idx) {
-    current = Math.max(0, Math.min(total - 1, idx));
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-
-    // Update tabs
-    tabs.forEach((t, i) => {
-      if (i === current) {
-        t.classList.add('active');
-        t.style.background = tabColors[i];
-        t.style.color = '#fff';
-        t.style.borderColor = tabColors[i];
-      } else {
-        t.classList.remove('active');
-        t.style.background = '#fff';
-        t.style.color = '#6e6e73';
-        t.style.borderColor = 'rgba(0,0,0,.1)';
-      }
-    });
-
-    // Update dots
-    dotsEl.querySelectorAll('.cdot').forEach((d, i) => {
-      if (i === current) {
-        d.classList.add('active');
-        d.style.background = tabColors[current];
-        d.style.width = '22px';
-      } else {
-        d.classList.remove('active');
-        d.style.background = '#4a4a4a';
-        d.style.width = '7px';
-      }
-    });
-  }
-
-  // Tab clicks
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => goTo(parseInt(tab.dataset.idx)));
-  });
-
-  // Arrow clicks
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
-
-  // Touch swipe on carousel
-  let touchStartX = 0;
-  track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', (e) => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
-  }, { passive: true });
-
-  // Init dots color
-  goTo(0);
-
-  // ── Contact form → Google Sheets via Apps Script ──
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXxvVLKgZ9UC2ALLSz00ufEVBSXewBeb44dsSGKlq8nygqIkSl0IfNok8SqbjHOd4Q/exec';
-
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const formSuccess = document.getElementById('form-success');
-  const formError = document.getElementById('form-error');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (APPS_SCRIPT_URL.includes('PEGA_AQUI')) {
-      formError.style.display = 'block';
-      document.getElementById('form-error-msg').textContent = 'El formulario aún no está configurado. Usa WhatsApp directamente.';
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin .8s linear infinite"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0"/></svg> Enviando...';
-    const fd = new FormData(form);
-    try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          name:    fd.get('name')    || '',
-          email:   fd.get('email')   || '',
-          service: fd.get('service') || '',
-          message: fd.get('message') || ''
-        })
-      });
-      form.style.display = 'none';
-      formSuccess.style.display = 'block';
-    } catch {
-      formError.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar mensaje';
-    }
+  document.querySelectorAll('.proj-card').forEach((card) => {
+    card.addEventListener('click', () => card.classList.toggle('open'));
   });
 </script>
-
-<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 
 </body>
 </html>
