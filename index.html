@@ -104,6 +104,10 @@
     /* ── Skills ── */
     .skill-group{background:#fff;border-radius:22px;padding:26px 24px;}
     .skill-chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;transition:all .2s;cursor:default;}
+    .fact-chip{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:11px 14px;border-radius:12px;}
+    .cert-badge{display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:600;color:#1d1d1f;background:#fff;border:1px solid #e8e8ed;padding:12px 14px;border-radius:12px;transition:all .2s;line-height:1.5;}
+    .cert-badge .chip-icon{margin-top:2px;}
+    @media(hover:hover){.cert-badge:hover{border-color:#1d1d1f;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);}}
     @media(hover:hover){.skill-chip:hover{border-color:#1d1d1f;color:#1d1d1f;transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.18);}}
 
     /* ── Footer ── */
@@ -117,8 +121,6 @@
       .cert-row:hover{transform:translateX(4px);box-shadow:0 10px 28px rgba(0,0,0,.1);}
       .cert-row:hover .cert-arrow{opacity:1;transform:translateX(0);}
     }
-    .cert-chip{transition:all .2s;}
-    @media(hover:hover){.cert-chip:hover{border-color:#1d1d1f;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);}}
 
     /* ── Editorial portrait (About) ── */
     .editorial-photo-wrap{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%);mask-image:linear-gradient(to right,transparent 0%,#000 8%);}
@@ -232,13 +234,13 @@
     <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
     <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
     <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién sos, y la constancia gana a largo plazo.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;">
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 Trader independiente</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 Co-CEO · SEROM A&amp;G</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">💻 Vibe coding</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🥋 MMA & BJJ</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌍 Inglés B2</span>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién eres, y la constancia gana a largo plazo.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg>Trader independiente</span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg>Co-CEO · SEROM A&amp;G</span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6z"/></svg>Vibe coding</span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/><path d="M4 10l2 2M20 10l-2 2"/></svg>MMA &amp; BJJ</span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>Inglés — B2</span>
     </div>
   </div>
 </section>
@@ -484,11 +486,20 @@
         </div>
       </a>
     </div>
-    <div data-animate style="display:flex;flex-wrap:wrap;gap:8px;">
-      <a href="certs/career-essentials-genai.jpg" target="_blank" rel="noopener" class="cert-chip" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg" onerror="this.remove()" alt="">Career Essentials in Generative AI — Microsoft & LinkedIn</a>
-      <a href="certs/claude-code-101.jpg" target="_blank" rel="noopener" class="cert-chip" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt="">Claude Code 101 — Anthropic</a>
-      <a href="certs/claude-101.jpg" target="_blank" rel="noopener" class="cert-chip" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt="">Claude 101 — Anthropic</a>
-      <a href="certs/what-is-generative-ai.pdf" target="_blank" rel="noopener" class="cert-chip" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#6e6e73;background:#fff;border:1px solid #e8e8ed;padding:7px 14px;border-radius:100px;"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" onerror="this.remove()" alt="">What Is Generative AI? — LinkedIn Learning</a>
+    <p data-animate style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:12px;">Cursos adicionales</p>
+    <div data-animate style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">
+      <a href="certs/career-essentials-genai.jpg" target="_blank" rel="noopener" class="cert-badge"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg" onerror="this.remove()" alt="">
+        <span>Career Essentials in Generative AI<br><small style="color:#a1a1a6;font-weight:500;">Microsoft &amp; LinkedIn</small></span>
+      </a>
+      <a href="certs/claude-code-101.jpg" target="_blank" rel="noopener" class="cert-badge"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt="">
+        <span>Claude Code 101<br><small style="color:#a1a1a6;font-weight:500;">Anthropic</small></span>
+      </a>
+      <a href="certs/claude-101.jpg" target="_blank" rel="noopener" class="cert-badge"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt="">
+        <span>Claude 101<br><small style="color:#a1a1a6;font-weight:500;">Anthropic</small></span>
+      </a>
+      <a href="certs/what-is-generative-ai.pdf" target="_blank" rel="noopener" class="cert-badge"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" onerror="this.remove()" alt="">
+        <span>What Is Generative AI?<br><small style="color:#a1a1a6;font-weight:500;">LinkedIn Learning</small></span>
+      </a>
     </div>
   </div>
 </section>
