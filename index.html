@@ -120,6 +120,12 @@
     .cert-chip{transition:all .2s;}
     @media(hover:hover){.cert-chip:hover{border-color:#1d1d1f;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);}}
 
+    /* ── Editorial portrait (About) ── */
+    .editorial-photo-wrap{position:relative;border-radius:20px;overflow:hidden;background:#ececec;box-shadow:0 20px 50px rgba(0,0,0,.12);}
+    .editorial-photo{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.08) brightness(1.03);mix-blend-mode:normal;}
+    .editorial-photo-wrap::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.35;pointer-events:none;}
+    .editorial-photo-wrap::before{content:'';position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(0,0,0,.25);pointer-events:none;z-index:2;}
+
     @media(max-width:767px){
       .desk-hide{display:none!important}
       .mob-single{grid-template-columns:1fr!important}
@@ -204,18 +210,23 @@
 
 <!-- ══ SOBRE MÍ ══ -->
 <section id="sobre-mi" style="background:#fff;padding:96px 5%;">
-  <div style="max-width:720px;margin:0 auto;" data-animate>
-    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:14px;">Sobre mí</p>
-    <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién sos, y la constancia gana a largo plazo.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;">
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 Trader independiente</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 Co-CEO · SEROM A&amp;G</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">💻 Vibe coding</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🥋 MMA & BJJ</span>
-      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌍 Inglés B2</span>
+  <div style="max-width:1040px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:center;" class="mob-single">
+    <div data-animate class="editorial-photo-wrap" style="aspect-ratio:4/5;">
+      <img class="editorial-photo" src="photo-editorial.jpg" alt="André Gómez Zenteno" />
+    </div>
+    <div data-animate>
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:14px;">Sobre mí</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
+      <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
+      <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
+      <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién sos, y la constancia gana a largo plazo.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 Trader independiente</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 Co-CEO · SEROM A&amp;G</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">💻 Vibe coding</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🥋 MMA & BJJ</span>
+        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌍 Inglés B2</span>
+      </div>
     </div>
   </div>
 </section>
