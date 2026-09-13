@@ -126,6 +126,18 @@
     .editorial-photo-wrap::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.35;pointer-events:none;}
     .editorial-photo-wrap::before{content:'';position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(0,0,0,.25);pointer-events:none;z-index:2;}
 
+    /* ── Hero split layout ── */
+    .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:stretch;max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:1;}
+    .hero-text{align-self:center;text-align:left;padding-bottom:40px;}
+    .hero-photo-col{height:calc(100dvh - 150px);min-height:420px;max-height:640px;}
+    .hero-photo-col .editorial-photo-wrap{height:100%;border-radius:28px 28px 0 0;box-shadow:none;}
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;gap:28px;}
+      .hero-text{text-align:center;padding-bottom:0;}
+      .hero-photo-col{order:-1;height:340px;min-height:280px;width:100%;}
+      .hero-photo-col .editorial-photo-wrap{border-radius:24px;}
+    }
+
     @media(max-width:767px){
       .desk-hide{display:none!important}
       .mob-single{grid-template-columns:1fr!important}
@@ -165,40 +177,46 @@
 </nav>
 
 <!-- ══ HERO ══ -->
-<section id="inicio" style="min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 6% 72px;background:#fff;position:relative;overflow:hidden;">
+<section id="inicio" style="min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:110px 6% 0;background:#fff;position:relative;overflow:hidden;">
 
   <div style="position:absolute;top:-10%;left:50%;width:min(700px,140vw);height:min(700px,140vw);background:radial-gradient(circle,rgba(0,0,0,.08) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;animation:drift1 14s ease-in-out infinite;"></div>
   <div style="position:absolute;bottom:-5%;right:-10%;width:min(400px,80vw);height:min(400px,80vw);background:radial-gradient(circle,rgba(124,58,237,.07) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;animation:drift2 11s ease-in-out infinite;"></div>
   <div style="position:absolute;top:20%;right:8%;width:min(260px,50vw);height:min(260px,50vw);background:radial-gradient(circle,rgba(16,185,129,.06) 0%,transparent 65%);border-radius:50%;pointer-events:none;z-index:0;animation:drift2 9s ease-in-out infinite reverse;"></div>
 
-  <div style="position:relative;z-index:1;max-width:600px;width:100%;animation:fadeUp .9s .1s ease both;opacity:0;">
+  <div class="hero-grid">
+    <div class="hero-text" data-animate style="animation:fadeUp .9s .1s ease both;opacity:0;">
 
-    <img src="photo-new.png" alt="André Gómez Zenteno" style="width:112px;height:112px;border-radius:50%;object-fit:cover;margin:0 auto 24px;border:3px solid #fff;box-shadow:0 8px 30px rgba(0,0,0,.12);" />
+      <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f7;border:1px solid rgba(0,0,0,.2);border-radius:100px;padding:8px 18px;margin-bottom:28px;">
+        <span style="width:7px;height:7px;background:#1d1d1f;border-radius:50%;flex-shrink:0;animation:dotBlink 2s ease infinite;"></span>
+        <span style="font-size:12px;font-weight:600;color:#1d1d1f;letter-spacing:.06em;text-transform:uppercase;">Abierto a nuevas oportunidades</span>
+      </div>
 
-    <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f7;border:1px solid rgba(0,0,0,.2);border-radius:100px;padding:8px 18px;margin-bottom:28px;">
-      <span style="width:7px;height:7px;background:#1d1d1f;border-radius:50%;flex-shrink:0;animation:dotBlink 2s ease infinite;"></span>
-      <span style="font-size:12px;font-weight:600;color:#1d1d1f;letter-spacing:.06em;text-transform:uppercase;">Abierto a nuevas oportunidades</span>
+      <h1 style="font-size:clamp(42px,7vw,76px);font-weight:800;line-height:1;letter-spacing:-.05em;color:#1d1d1f;margin-bottom:12px;">
+        André Gómez<br><span style="color:#1d1d1f;">Zenteno</span>
+      </h1>
+
+      <p style="font-size:clamp(15px,3vw,18px);color:#6e6e73;line-height:1.6;max-width:480px;margin:20px 0 8px;font-weight:500;">
+        Desarrollo de Software Asistido por IA (Vibe Coding) · Mercados Financieros y Trading · Pensamiento Estratégico
+      </p>
+      <p style="font-size:14px;color:#a1a1a6;margin-bottom:36px;">
+        Cáceres, Extremadura, España · originario de Guatemala
+      </p>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="mailto:andregomezzenteno@gmail.com" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+          Contactar
+        </a>
+        <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-ghost">
+          Ver LinkedIn
+        </a>
+      </div>
     </div>
 
-    <h1 style="font-size:clamp(42px,10vw,72px);font-weight:800;line-height:1;letter-spacing:-.05em;color:#1d1d1f;margin-bottom:12px;">
-      André Gómez<br><span style="color:#1d1d1f;">Zenteno</span>
-    </h1>
-
-    <p style="font-size:clamp(15px,4vw,18px);color:#6e6e73;line-height:1.6;max-width:480px;margin:20px auto 8px;font-weight:500;">
-      Desarrollo de Software Asistido por IA (Vibe Coding) · Mercados Financieros y Trading · Pensamiento Estratégico
-    </p>
-    <p style="font-size:14px;color:#a1a1a6;margin-bottom:36px;">
-      Cáceres, Extremadura, España · originario de Guatemala
-    </p>
-
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="mailto:andregomezzenteno@gmail.com" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
-        Contactar
-      </a>
-      <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-ghost">
-        Ver LinkedIn
-      </a>
+    <div class="hero-photo-col" data-animate style="animation:fadeUp .9s .25s ease both;opacity:0;">
+      <div class="editorial-photo-wrap">
+        <img class="editorial-photo" src="photo-editorial.jpg" alt="André Gómez Zenteno" style="object-position:top center;" />
+      </div>
     </div>
   </div>
 
@@ -210,23 +228,18 @@
 
 <!-- ══ SOBRE MÍ ══ -->
 <section id="sobre-mi" style="background:#fff;padding:96px 5%;">
-  <div style="max-width:1040px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:center;" class="mob-single">
-    <div data-animate class="editorial-photo-wrap" style="aspect-ratio:4/5;">
-      <img class="editorial-photo" src="photo-editorial.jpg" alt="André Gómez Zenteno" />
-    </div>
-    <div data-animate>
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:14px;">Sobre mí</p>
-      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
-      <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
-      <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
-      <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién sos, y la constancia gana a largo plazo.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 Trader independiente</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 Co-CEO · SEROM A&amp;G</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">💻 Vibe coding</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🥋 MMA & BJJ</span>
-        <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌍 Inglés B2</span>
-      </div>
+  <div style="max-width:720px;margin:0 auto;" data-animate>
+    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:14px;">Sobre mí</p>
+    <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién sos, y la constancia gana a largo plazo.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">📈 Trader independiente</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🏢 Co-CEO · SEROM A&amp;G</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">💻 Vibe coding</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🥋 MMA & BJJ</span>
+      <span style="font-size:13px;font-weight:500;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 16px;border-radius:100px;">🌍 Inglés B2</span>
     </div>
   </div>
 </section>
