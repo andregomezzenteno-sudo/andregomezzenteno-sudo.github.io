@@ -75,11 +75,17 @@
     @media(hover:hover){
       .proj-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.16);}
     }
-    .proj-face{position:absolute;inset:0;padding:26px 26px;display:flex;flex-direction:column;justify-content:flex-end;transition:opacity .35s ease;z-index:1;}
-    .proj-front{opacity:1;}
-    .proj-back{opacity:0;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);justify-content:center;}
+    .proj-face{display:flex;flex-direction:column;transition:opacity .35s ease;z-index:1;}
+    .proj-front{opacity:1;position:static;background:#0a0a0a;}
+    .proj-back{position:absolute;inset:0;padding:26px;justify-content:center;opacity:0;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
     .proj-card.open .proj-front{opacity:0;pointer-events:none;}
     .proj-card.open .proj-back{opacity:1;}
+    .proj-shot-wrap{position:relative;height:160px;overflow:hidden;background:#000;flex-shrink:0;}
+    .proj-shot{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s cubic-bezier(0.16,1,0.3,1);}
+    @media(hover:hover){.proj-card:hover .proj-shot{transform:scale(1.06);}}
+    .browser-bar{position:absolute;top:0;left:0;right:0;height:22px;background:rgba(0,0,0,.55);display:flex;align-items:center;gap:5px;padding:0 10px;z-index:2;}
+    .browser-dot{width:6px;height:6px;border-radius:50%;}
+    .proj-front-body{padding:18px 24px 22px;}
     @media(hover:hover){
       .proj-card:hover .proj-front{opacity:0;}
       .proj-card:hover .proj-back{opacity:1;}
@@ -292,8 +298,8 @@
         <div class="tl-dot" style="background:#8e8e93;box-shadow:0 0 0 2px #8e8e93;"></div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
           <div style="display:flex;gap:14px;align-items:flex-start;">
-            <div style="width:34px;height:34px;border-radius:9px;background:#8e8e93;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6l9 4 9-4-9-4z"/><path d="M3 6v6c0 4 4 7 9 8 5-1 9-4 9-8V6"/></svg>
+            <div style="width:34px;height:34px;border-radius:9px;background:#fff;border:1px solid #e8e8ed;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:5px;">
+              <img src="logos/villanueva-serena.svg" alt="Ayuntamiento de Villanueva de la Serena" style="width:100%;height:100%;object-fit:contain;" />
             </div>
             <div>
               <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Estudiante en Prácticas Administrativas</h3>
@@ -363,7 +369,9 @@
     <div data-animate style="display:grid;gap:14px;">
       <div style="background:#f5f5f7;border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
         <div style="display:flex;gap:14px;align-items:flex-start;">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M12 2 3 6l9 4 9-4-9-4z"/><path d="M3 6v6c0 4 4 7 9 8 5-1 9-4 9-8V6"/></svg>
+          <div style="width:26px;height:26px;border-radius:7px;overflow:hidden;flex-shrink:0;margin-top:2px;border:1px solid #e8e8ed;">
+            <img src="logos/rayuela.jpg" alt="Rayuela - Junta de Extremadura" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">I.E.S. San José</h3>
             <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Ciclo Formativo de Grado Superior — Finanzas y Administración</p>
@@ -380,6 +388,16 @@
           </div>
         </div>
         <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#f5f5f7;padding:5px 12px;border-radius:100px;white-space:nowrap;">2023</span>
+      </div>
+      <div style="background:#f5f5f7;border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <img src="logos/ministerio-educacion.svg" alt="Ministerio de Educación, Formación Profesional y Deportes" style="width:28px;height:28px;object-fit:contain;flex-shrink:0;margin-top:2px;" />
+          <div>
+            <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">Homologación al título de Bachiller</h3>
+            <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Ministerio de Educación, Formación Profesional y Deportes (España) — estudios de Guatemala reconocidos bajo LOE</p>
+          </div>
+        </div>
+        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#fff;padding:5px 12px;border-radius:100px;white-space:nowrap;">2024</span>
       </div>
     </div>
   </div>
@@ -408,8 +426,8 @@
       </a>
       <a href="certs/cfte-masterclass.png" target="_blank" rel="noopener" class="cert-row" style="background:#fff;border-radius:16px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:inherit;">
         <div style="display:flex;align-items:center;gap:14px;">
-          <div style="width:34px;height:34px;border-radius:9px;background:#1d1d1f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>
+          <div style="width:34px;height:34px;border-radius:9px;overflow:hidden;flex-shrink:0;">
+            <img src="logos/cfte-box.png" alt="CFTE" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span style="font-size:14px;font-weight:600;color:#1d1d1f;">Masterclass in Fintech</span>
         </div>
@@ -432,8 +450,8 @@
       </a>
       <a href="certs/elements-of-ai.png" target="_blank" rel="noopener" class="cert-row" style="background:#fff;border-radius:16px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:inherit;">
         <div style="display:flex;align-items:center;gap:14px;">
-          <div style="width:34px;height:34px;border-radius:9px;background:#1d1d1f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7l7 9M16 7L9 16"/></svg>
+          <div style="width:34px;height:34px;border-radius:9px;background:#fff;border:1px solid #e8e8ed;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:4px;">
+            <img src="logos/helsinki.svg" alt="Universidad de Helsinki" style="width:100%;height:100%;object-fit:contain;" />
           </div>
           <span style="font-size:14px;font-weight:600;color:#1d1d1f;">Elements of AI</span>
         </div>
@@ -464,17 +482,20 @@
     <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;">Proyectos técnicos</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:56px;" class="mob-single">
 
-      <div data-animate class="proj-card featured" style="grid-column:1/-1;background:linear-gradient(145deg,#001525 0%,#001020 100%);">
-        <div class="proj-mark" aria-hidden="true">
-          <p style="position:absolute;top:20px;left:26px;font-size:68px;font-weight:800;letter-spacing:-.04em;color:rgba(255,255,255,.07);line-height:1;">PathFolio</p>
-        </div>
+      <div data-animate class="proj-card featured" style="grid-column:1/-1;background:#06060E;">
         <div class="proj-expand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         <div class="proj-face proj-front">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-            <span class="proj-tag">2026</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">JavaScript vanilla</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg" onerror="this.remove()" alt="">Cloudflare Workers</span>
+          <div class="proj-shot-wrap" style="height:220px;">
+            <div class="browser-bar"><span class="browser-dot" style="background:#ff5f57;"></span><span class="browser-dot" style="background:#febc2e;"></span><span class="browser-dot" style="background:#28c840;"></span></div>
+            <img class="proj-shot" src="screenshots/pathfolio.jpg" alt="Captura de PathFolio" loading="lazy" />
           </div>
-          <h3 style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">PathFolio</h3>
-          <p style="font-size:14px;color:rgba(255,255,255,.55);">Cuestionario bilingüe de perfil de inversión, con backtesting contra precios históricos reales.</p>
+          <div class="proj-front-body">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+              <span class="proj-tag">2026</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">JavaScript vanilla</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg" onerror="this.remove()" alt="">Cloudflare Workers</span>
+            </div>
+            <h3 style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">PathFolio</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,.55);">Cuestionario bilingüe de perfil de inversión, con backtesting contra precios históricos reales.</p>
+          </div>
         </div>
         <div class="proj-back" style="padding:32px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
@@ -489,16 +510,19 @@
       </div>
 
       <div data-animate class="proj-card" style="background:#06060E;">
-        <div class="proj-mark" aria-hidden="true">
-          <p style="position:absolute;top:20px;left:24px;font-size:38px;font-weight:800;letter-spacing:-.03em;color:rgba(255,255,255,.07);line-height:1.05;">trading<br>backtester</p>
-        </div>
         <div class="proj-expand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         <div class="proj-face proj-front">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-            <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">2026 · JavaScript</span>
+          <div class="proj-shot-wrap">
+            <div class="browser-bar"><span class="browser-dot" style="background:#ff5f57;"></span><span class="browser-dot" style="background:#febc2e;"></span><span class="browser-dot" style="background:#28c840;"></span></div>
+            <img class="proj-shot" src="screenshots/trading-backtester.jpg" alt="Captura de trading-backtester" loading="lazy" />
           </div>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">trading-backtester</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.5);">Backtester de cruce de medias móviles con métricas de riesgo estándar.</p>
+          <div class="proj-front-body">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+              <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">2026 · JavaScript</span>
+            </div>
+            <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">trading-backtester</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);">Backtester de cruce de medias móviles con métricas de riesgo estándar.</p>
+          </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
@@ -513,16 +537,19 @@
       </div>
 
       <div data-animate class="proj-card" style="background:#0a0a0a;">
-        <div class="proj-mark" aria-hidden="true">
-          <p style="position:absolute;top:20px;left:24px;font-size:34px;font-weight:800;letter-spacing:-.03em;color:rgba(255,255,255,.08);line-height:1.05;">Drift<br>Monitor</p>
-        </div>
         <div class="proj-expand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         <div class="proj-face proj-front">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-            <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" onerror="this.remove()" alt="">2026 · Python</span>
+          <div class="proj-shot-wrap">
+            <div class="browser-bar"><span class="browser-dot" style="background:#ff5f57;"></span><span class="browser-dot" style="background:#febc2e;"></span><span class="browser-dot" style="background:#28c840;"></span></div>
+            <img class="proj-shot" src="screenshots/portfolio-drift-monitor.jpg" alt="Captura de Portfolio Drift Monitor" loading="lazy" />
           </div>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">Portfolio Drift Monitor</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.5);">Supervisión de carteras para banca privada: desviación y riesgo de concentración.</p>
+          <div class="proj-front-body">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+              <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" onerror="this.remove()" alt="">2026 · Python</span>
+            </div>
+            <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">Portfolio Drift Monitor</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);">Supervisión de carteras para banca privada: desviación y riesgo de concentración.</p>
+          </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
@@ -541,15 +568,21 @@
     <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;">Proyectos web</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
 
-      <div data-animate class="proj-card" style="grid-column:1/-1;background:linear-gradient(145deg,#001525 0%,#001020 100%);">
+      <div data-animate class="proj-card" style="grid-column:1/-1;background:#06060E;">
         <div class="proj-expand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         <div class="proj-face proj-front">
-          <img src="logos/verapaz.png" alt="Verapaz Express" style="width:44px;height:44px;object-fit:cover;border-radius:50%;margin-bottom:12px;" />
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-            <span class="proj-tag">Web</span>
+          <div class="proj-shot-wrap" style="height:220px;">
+            <div class="browser-bar"><span class="browser-dot" style="background:#ff5f57;"></span><span class="browser-dot" style="background:#febc2e;"></span><span class="browser-dot" style="background:#28c840;"></span></div>
+            <img class="proj-shot" src="screenshots/verapaz.jpg" alt="Captura de Verapaz Express" loading="lazy" />
           </div>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">Verapaz Express</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.5);">Tienda guatemalteca en Nashville, TN — envíos de dinero y encomiendas a Guatemala y Honduras.</p>
+          <div class="proj-front-body" style="display:flex;align-items:center;gap:14px;">
+            <img src="logos/verapaz.png" alt="Verapaz Express" style="width:40px;height:40px;object-fit:cover;border-radius:50%;flex-shrink:0;" />
+            <div>
+              <span class="proj-tag" style="margin-bottom:6px;display:inline-block;">Web</span>
+              <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:4px;">Verapaz Express</h3>
+              <p style="font-size:13px;color:rgba(255,255,255,.5);">Tienda guatemalteca en Nashville, TN — envíos de dinero y encomiendas a Guatemala y Honduras.</p>
+            </div>
+          </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
@@ -563,9 +596,15 @@
       <div data-animate class="proj-card" style="background:#06060E;">
         <div class="proj-expand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         <div class="proj-face proj-front">
-          <img src="serom-logo.png" alt="Serom A&G" style="height:26px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:12px;" />
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">SEROM A&amp;G</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.5);">Landing premium con estética oscura y automatización.</p>
+          <div class="proj-shot-wrap">
+            <div class="browser-bar"><span class="browser-dot" style="background:#ff5f57;"></span><span class="browser-dot" style="background:#febc2e;"></span><span class="browser-dot" style="background:#28c840;"></span></div>
+            <img class="proj-shot" src="screenshots/serom.jpg" alt="Captura de SEROM A&G" loading="lazy" />
+          </div>
+          <div class="proj-front-body">
+            <img src="serom-logo.png" alt="Serom A&G" style="height:22px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:10px;" />
+            <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">SEROM A&amp;G</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);">Landing premium con estética oscura y automatización.</p>
+          </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
@@ -579,9 +618,15 @@
       <div data-animate class="proj-card" style="background:#0a0a0a;">
         <div class="proj-expand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         <div class="proj-face proj-front">
-          <p style="font-size:24px;font-weight:300;color:#fff;font-family:Georgia,'Times New Roman',serif;font-style:italic;margin-bottom:12px;">дрЭ</p>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">All Pain Ends</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,.5);">Marca personal editorial minimalista.</p>
+          <div class="proj-shot-wrap" style="background:#fff;">
+            <div class="browser-bar"><span class="browser-dot" style="background:#ff5f57;"></span><span class="browser-dot" style="background:#febc2e;"></span><span class="browser-dot" style="background:#28c840;"></span></div>
+            <img class="proj-shot" src="screenshots/allpainends.jpg" alt="Captura de All Pain Ends" loading="lazy" />
+          </div>
+          <div class="proj-front-body">
+            <p style="font-size:20px;font-weight:300;color:#fff;font-family:Georgia,'Times New Roman',serif;font-style:italic;margin-bottom:8px;">дрЭ</p>
+            <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">All Pain Ends</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);">Marca personal editorial minimalista.</p>
+          </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
