@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="André Gómez Zenteno — CV virtual interactivo. Desarrollo de software asistido por IA, mercados financieros y trading.">
-  <title>André Gómez Zenteno — CV</title>
+  <meta id="meta-description" name="description" content="André Gómez Zenteno — CV virtual interactivo. Desarrollo de software asistido por IA, mercados financieros y trading.">
+  <title id="doc-title">André Gómez Zenteno — CV</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +48,8 @@
     .btn-primary:active{transform:scale(.97)}
     .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:#1d1d1f;border:1.5px solid rgba(29,29,31,.15);padding:14px 28px;border-radius:100px;transition:all .2s;-webkit-tap-highlight-color:transparent;}
     .btn-ghost:active{background:#f5f5f7}
+    #lang-toggle:active{transform:scale(.95);}
+    @media(hover:hover){#lang-toggle:hover{border-color:#1d1d1f;}}
     .btn-linkedin{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:#fff;background:#0077B5;padding:14px 26px;border-radius:100px;transition:all .22s;-webkit-tap-highlight-color:transparent;}
     .btn-linkedin:active{transform:scale(.97)}
 
@@ -159,13 +161,17 @@
     André<span style="color:#1d1d1f;">.</span>
   </a>
   <div style="display:flex;gap:24px;align-items:center;" class="desk-hide">
-    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
-    <a href="#experiencia" class="nav-link">Experiencia</a>
-    <a href="#proyectos" class="nav-link">Proyectos</a>
+    <a href="#sobre-mi" class="nav-link" data-i18n="nav.about">Sobre mí</a>
+    <a href="#experiencia" class="nav-link" data-i18n="nav.experience">Experiencia</a>
+    <a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
     <a href="#skills" class="nav-link">Skills</a>
-    <a href="#contacto" class="nav-link">Contacto</a>
+    <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
   </div>
   <div style="display:flex;gap:10px;align-items:center;">
+    <button id="lang-toggle" type="button" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1d1d1f;background:#f5f5f7;border:1px solid #e8e8ed;padding:8px 14px;border-radius:100px;cursor:pointer;font-family:inherit;transition:all .2s;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>
+      <span id="lang-toggle-label">EN</span>
+    </button>
     <a href="https://github.com/andregomezzenteno-sudo" target="_blank" rel="noopener" class="btn-ghost mob-hide" style="padding:9px 16px;font-size:13px;">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.763-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.874.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.48 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.696.825.578C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"/></svg>
       GitHub
@@ -189,27 +195,27 @@
 
       <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f7;border:1px solid rgba(0,0,0,.2);border-radius:100px;padding:8px 18px;margin-bottom:28px;">
         <span style="width:7px;height:7px;background:#1d1d1f;border-radius:50%;flex-shrink:0;animation:dotBlink 2s ease infinite;"></span>
-        <span style="font-size:12px;font-weight:600;color:#1d1d1f;letter-spacing:.06em;text-transform:uppercase;">Abierto a nuevas oportunidades</span>
+        <span style="font-size:12px;font-weight:600;color:#1d1d1f;letter-spacing:.06em;text-transform:uppercase;" data-i18n="hero.badge">Abierto a nuevas oportunidades</span>
       </div>
 
       <h1 style="font-size:clamp(42px,7vw,76px);font-weight:800;line-height:1;letter-spacing:-.05em;color:#1d1d1f;margin-bottom:12px;">
         André Gómez<br><span style="color:#1d1d1f;">Zenteno</span>
       </h1>
 
-      <p style="font-size:clamp(15px,3vw,18px);color:#6e6e73;line-height:1.6;max-width:480px;margin:20px 0 8px;font-weight:500;">
+      <p style="font-size:clamp(15px,3vw,18px);color:#6e6e73;line-height:1.6;max-width:480px;margin:20px 0 8px;font-weight:500;" data-i18n="hero.subtitle">
         Desarrollo de Software Asistido por IA (Vibe Coding) · Mercados Financieros y Trading · Pensamiento Estratégico
       </p>
-      <p style="font-size:14px;color:#a1a1a6;margin-bottom:36px;">
+      <p style="font-size:14px;color:#a1a1a6;margin-bottom:36px;" data-i18n="hero.location">
         Cáceres, Extremadura, España · originario de Guatemala
       </p>
 
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="mailto:andregomezzenteno@gmail.com" class="btn-primary">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andregomezzenteno@gmail.com&su=Contacto%20desde%20tu%20CV" target="_blank" rel="noopener" class="btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
-          Contactar
+          <span data-i18n="hero.cta.contact">Contactar</span>
         </a>
         <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-ghost">
-          Ver LinkedIn
+          <span data-i18n="hero.cta.linkedin">Ver LinkedIn</span>
         </a>
       </div>
     </div>
@@ -222,7 +228,7 @@
   </div>
 
   <div class="scroll-cue">
-    <span style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;">Scroll</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;" data-i18n="hero.scroll">Scroll</span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
@@ -230,17 +236,17 @@
 <!-- ══ SOBRE MÍ ══ -->
 <section id="sobre-mi" style="background:#fff;padding:96px 5%;">
   <div style="max-width:720px;margin:0 auto;" data-animate>
-    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:14px;">Sobre mí</p>
-    <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;">Tecnología, mercados<br>y mentalidad de alto rendimiento</h2>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Profesional híbrido en finanzas y tecnología, basado en España, que combina experiencia operativa en banca, trading activo y desarrollo de software asistido por IA. Originario de Guatemala. Diseñé y desplegué tres proyectos de portafolio aplicando metodología financiera real, con prácticas de ingeniería de nivel producción — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;">Opero activamente en mercados bursátiles y criptoactivos con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Soy también co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong>, empresa española de automatización y crecimiento digital, junto a mi socio <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>.</p>
-    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;">Cuento con certificaciones de Harvard (CS50 AI), Universidad de Helsinki y CFTE. Fuera de la pantalla, practico MMA y BJJ — he entrenado en seminarios con peleadores de UFC. Las artes marciales me enseñaron lo mismo que los mercados: la presión revela quién eres, y la constancia gana a largo plazo.</p>
+    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:14px;" data-i18n="about.eyebrow">Sobre mí</p>
+    <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;margin-bottom:26px;" data-i18n="about.h2">Finanzas cuantitativas +<br>ingeniería de IA aplicada</h2>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;" data-i18n="about.p1">Construyo en la intersección exacta que buscan las fintech: <strong style="color:#1d1d1f;font-weight:600;">mercados financieros reales</strong> y <strong style="color:#1d1d1f;font-weight:600;">software de producción asistido por IA</strong>. Trading activo, banca operativa, y tres proyectos técnicos con metodología financiera auditable — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.</p>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:16px;" data-i18n="about.p2">Co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong> junto a <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>. Completé la simulación de analista de Sales &amp; Trading de <strong style="color:#1d1d1f;font-weight:600;">Bank of America</strong> (Forage). Certificado por <strong style="color:#1d1d1f;font-weight:600;">Harvard</strong> (CS50 AI), la <strong style="color:#1d1d1f;font-weight:600;">Universidad de Helsinki</strong>, <strong style="color:#1d1d1f;font-weight:600;">CFTE</strong> y <strong style="color:#1d1d1f;font-weight:600;">Cambridge English (B2)</strong>.</p>
+    <p style="font-size:16px;color:#4a4a4f;line-height:1.85;margin-bottom:28px;" data-i18n="about.p3">Fuera de pantalla, entreno MMA y BJJ — incluidos seminarios con peleadores de UFC. La misma disciplina que exigen los mercados: la presión revela quién eres, y gana quien es constante.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
-      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg>Trader independiente</span>
-      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg>Co-CEO · SEROM A&amp;G</span>
-      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6z"/></svg>Vibe coding</span>
-      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/><path d="M4 10l2 2M20 10l-2 2"/></svg>MMA &amp; BJJ</span>
-      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>Inglés — B2</span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg><span data-i18n="about.fact1">Trader independiente</span></span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg><span>Co-CEO · SEROM A&amp;G</span></span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6z"/></svg><span data-i18n="about.fact3">Vibe coding</span></span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/><path d="M4 10l2 2M20 10l-2 2"/></svg><span>MMA &amp; BJJ</span></span>
+      <span class="fact-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg><span data-i18n="about.fact5">Inglés — B2</span></span>
     </div>
   </div>
 </section>
@@ -249,10 +255,10 @@
 <section id="experiencia" style="background:#f5f5f7;padding:96px 5%;">
   <div style="max-width:720px;margin:0 auto;">
     <div data-animate style="margin-bottom:48px;">
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;">Experiencia</p>
-      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;">Recorrido profesional</h2>
-      <p style="font-size:13px;color:#a1a1a6;margin-top:10px;" class="mob-hide">Pasa el ratón por cada tarjeta para ver el detalle.</p>
-      <p style="font-size:13px;color:#a1a1a6;margin-top:10px;" class="desk-hide">Toca cada tarjeta para ver el detalle.</p>
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;" data-i18n="exp.eyebrow">Experiencia</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;" data-i18n="exp.h2">Recorrido profesional</h2>
+      <p style="font-size:13px;color:#a1a1a6;margin-top:10px;" class="mob-hide" data-i18n="exp.hint.desktop">Pasa el ratón por cada tarjeta para ver el detalle.</p>
+      <p style="font-size:13px;color:#a1a1a6;margin-top:10px;" class="desk-hide" data-i18n="exp.hint.mobile">Toca cada tarjeta para ver el detalle.</p>
     </div>
 
     <div data-animate>
@@ -264,14 +270,14 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg>
             </div>
             <div>
-              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Trader Independiente</h3>
-              <p style="font-size:14px;color:#1d1d1f;font-weight:600;margin-top:2px;">Autónomo · España</p>
+              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;" data-i18n="exp.1.title">Trader Independiente</h3>
+              <p style="font-size:14px;color:#1d1d1f;font-weight:600;margin-top:2px;" data-i18n="exp.1.subtitle">Autónomo · España</p>
             </div>
           </div>
-          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">En curso</span>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;" data-i18n="exp.1.date">En curso</span>
         </div>
         <div class="tl-detail">
-          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Trading en renta variable y otros instrumentos cotizados con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Mantengo una posición de inversión a largo plazo en criptoactivos, respaldada por análisis macroeconómico y geopolítico.</p>
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;" data-i18n="exp.1.detail">Trading en renta variable y otros instrumentos cotizados con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Mantengo una posición de inversión a largo plazo en criptoactivos, respaldada por análisis macroeconómico y geopolítico.</p>
         </div>
       </div>
     </div>
@@ -285,14 +291,14 @@
               <img src="serom-logo.png" alt="SEROM" style="width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);" />
             </div>
             <div>
-              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Co-CEO & Cofundador</h3>
-              <p style="font-size:14px;color:#3a3a3c;font-weight:600;margin-top:2px;">SEROM Automation & Growth · Autónomo</p>
+              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;" data-i18n="exp.2.title">Co-CEO & Cofundador</h3>
+              <p style="font-size:14px;color:#3a3a3c;font-weight:600;margin-top:2px;">SEROM Automation & Growth · <span data-i18n="exp.2.subtitle">Autónomo</span></p>
             </div>
           </div>
-          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">2025 — Presente</span>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;" data-i18n="exp.2.date">2025 — Presente</span>
         </div>
         <div class="tl-detail">
-          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Empresa española de automatización y crecimiento digital, cofundada junto a Gabriel Martínez Bravo. Desarrollo de páginas web, automatización de procesos con formularios/IA y aplicación de agentes inteligentes a negocios reales.</p>
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;" data-i18n="exp.2.detail">Empresa española de automatización y crecimiento digital, cofundada junto a Gabriel Martínez Bravo. Desarrollo de páginas web, automatización de procesos con formularios/IA y aplicación de agentes inteligentes a negocios reales.</p>
         </div>
       </div>
     </div>
@@ -306,14 +312,14 @@
               <img src="logos/verapaz.png" alt="Verapaz Express" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
             </div>
             <div>
-              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Desarrollo de Herramientas Internas</h3>
-              <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;">Verapaz Express (Negocio Familiar) · Estados Unidos (remoto)</p>
+              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;" data-i18n="exp.3.title">Desarrollo de Herramientas Internas</h3>
+              <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;" data-i18n="exp.3.subtitle">Verapaz Express (Negocio Familiar) · Estados Unidos (remoto)</p>
             </div>
           </div>
-          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">2022 — Presente</span>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;" data-i18n="exp.3.date">2022 — Presente</span>
         </div>
         <div class="tl-detail">
-          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Diseñé y construí un sistema de gestión de inventario, al que integré un agente de IA (API de Claude) capaz de leer, analizar y ejecutar acciones sobre el sistema con confirmación explícita del usuario y registro de cada acción, junto con una app de reserva de citas.</p>
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;" data-i18n="exp.3.detail">Diseñé y construí un sistema de gestión de inventario, al que integré un agente de IA (API de Claude) capaz de leer, analizar y ejecutar acciones sobre el sistema con confirmación explícita del usuario y registro de cada acción, junto con una app de reserva de citas.</p>
         </div>
       </div>
     </div>
@@ -327,14 +333,14 @@
               <img src="logos/villanueva-serena.svg" alt="Ayuntamiento de Villanueva de la Serena" style="width:100%;height:100%;object-fit:contain;" />
             </div>
             <div>
-              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Estudiante en Prácticas Administrativas</h3>
-              <p style="font-size:14px;color:#8e8e93;font-weight:600;margin-top:2px;">Universidad Popular de Villanueva de la Serena · España</p>
+              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;" data-i18n="exp.4.title">Estudiante en Prácticas Administrativas</h3>
+              <p style="font-size:14px;color:#8e8e93;font-weight:600;margin-top:2px;" data-i18n="exp.4.subtitle">Universidad Popular de Villanueva de la Serena · España</p>
             </div>
           </div>
-          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">Mar — Abr 2026</span>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;" data-i18n="exp.4.date">Mar — Abr 2026</span>
         </div>
         <div class="tl-detail">
-          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Apoyo en organización documental, atención al público y coordinación de actividades formativas en una institución pública.</p>
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;" data-i18n="exp.4.detail">Apoyo en organización documental, atención al público y coordinación de actividades formativas en una institución pública.</p>
         </div>
       </div>
     </div>
@@ -348,14 +354,14 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3v5zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5z"/></svg>
             </div>
             <div>
-              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Representante de Atención al Cliente</h3>
-              <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;">Allied Global (campaña de telecomunicaciones) · Guatemala</p>
+              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;" data-i18n="exp.5.title">Representante de Atención al Cliente</h3>
+              <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;" data-i18n="exp.5.subtitle">Allied Global (campaña de telecomunicaciones) · Guatemala</p>
             </div>
           </div>
-          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">2023 (8 meses)</span>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;" data-i18n="exp.5.date">2023 (8 meses)</span>
         </div>
         <div class="tl-detail">
-          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Atención telefónica a clientes de una compañía de telecomunicaciones en un entorno BPO de ritmo exigente.</p>
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;" data-i18n="exp.5.detail">Atención telefónica a clientes de una compañía de telecomunicaciones en un entorno BPO de ritmo exigente.</p>
         </div>
       </div>
     </div>
@@ -369,14 +375,14 @@
               <img src="logos/citi.svg" alt="Citi" style="width:100%;height:100%;object-fit:contain;" />
             </div>
             <div>
-              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;">Representante de Atención al Cliente</h3>
-              <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;">Citi · Ciudad de Guatemala, Guatemala</p>
+              <h3 style="font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:-.02em;" data-i18n="exp.6.title">Representante de Atención al Cliente</h3>
+              <p style="font-size:14px;color:#6e6e73;font-weight:600;margin-top:2px;" data-i18n="exp.6.subtitle">Citi · Ciudad de Guatemala, Guatemala</p>
             </div>
           </div>
-          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;">Feb — Jul 2022</span>
+          <span style="font-size:12px;font-weight:600;color:#a1a1a6;white-space:nowrap;" data-i18n="exp.6.date">Feb — Jul 2022</span>
         </div>
         <div class="tl-detail">
-          <p style="font-size:14px;color:#6e6e73;line-height:1.7;">Atención directa al cliente dentro de una institución bancaria global, desarrollando disciplina operativa y comprensión práctica de procesos financieros regulados.</p>
+          <p style="font-size:14px;color:#6e6e73;line-height:1.7;" data-i18n="exp.6.detail">Atención directa al cliente dentro de una institución bancaria global, desarrollando disciplina operativa y comprensión práctica de procesos financieros regulados.</p>
         </div>
       </div>
     </div>
@@ -387,8 +393,8 @@
 <section id="educacion" style="background:#fff;padding:96px 5%;">
   <div style="max-width:720px;margin:0 auto;">
     <div data-animate style="margin-bottom:48px;">
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;">Educación</p>
-      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;">Formación</h2>
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;" data-i18n="edu.eyebrow">Educación</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;" data-i18n="edu.h2">Formación</h2>
     </div>
 
     <div data-animate style="display:grid;gap:14px;">
@@ -399,30 +405,30 @@
           </div>
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">I.E.S. San José</h3>
-            <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Ciclo Formativo de Grado Superior — Finanzas y Administración</p>
+            <p style="font-size:14px;color:#6e6e73;margin-top:2px;" data-i18n="edu.1.desc">Ciclo Formativo de Grado Superior — Finanzas y Administración</p>
           </div>
         </div>
-        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#f5f5f7;padding:5px 12px;border-radius:100px;white-space:nowrap;">2025 — 2027</span>
+        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#f5f5f7;padding:5px 12px;border-radius:100px;white-space:nowrap;" data-i18n="edu.1.date">2025 — 2027</span>
       </div>
       <div style="background:#f5f5f7;border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
         <div style="display:flex;gap:14px;align-items:flex-start;">
           <img src="logos/landivar.svg" alt="Universidad Rafael Landívar" style="width:28px;height:28px;object-fit:contain;flex-shrink:0;margin-top:2px;" />
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">Universidad Rafael Landívar</h3>
-            <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Licenciatura en Economía Empresarial — Finanzas y Mercados Financieros</p>
+            <p style="font-size:14px;color:#6e6e73;margin-top:2px;" data-i18n="edu.2.desc">Licenciatura en Economía Empresarial — Finanzas y Mercados Financieros</p>
           </div>
         </div>
-        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#f5f5f7;padding:5px 12px;border-radius:100px;white-space:nowrap;">2023</span>
+        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#f5f5f7;padding:5px 12px;border-radius:100px;white-space:nowrap;" data-i18n="edu.2.date">2023</span>
       </div>
       <div style="background:#f5f5f7;border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
         <div style="display:flex;gap:14px;align-items:flex-start;">
           <img src="logos/ministerio-educacion.svg" alt="Ministerio de Educación, Formación Profesional y Deportes" style="width:28px;height:28px;object-fit:contain;flex-shrink:0;margin-top:2px;" />
           <div>
-            <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;">Homologación al título de Bachiller</h3>
-            <p style="font-size:14px;color:#6e6e73;margin-top:2px;">Ministerio de Educación, Formación Profesional y Deportes (España) — estudios de Guatemala reconocidos bajo LOE</p>
+            <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;" data-i18n="edu.3.title">Homologación al título de Bachiller</h3>
+            <p style="font-size:14px;color:#6e6e73;margin-top:2px;" data-i18n="edu.3.desc">Ministerio de Educación, Formación Profesional y Deportes (España) — estudios de Guatemala reconocidos bajo LOE</p>
           </div>
         </div>
-        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#fff;padding:5px 12px;border-radius:100px;white-space:nowrap;">2024</span>
+        <span style="font-size:12px;font-weight:600;color:#1d1d1f;background:#fff;padding:5px 12px;border-radius:100px;white-space:nowrap;" data-i18n="edu.3.date">2024</span>
       </div>
     </div>
   </div>
@@ -432,10 +438,10 @@
 <section id="certificaciones" style="background:#f5f5f7;padding:96px 5%;">
   <div style="max-width:720px;margin:0 auto;">
     <div data-animate style="margin-bottom:44px;">
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;">Certificaciones</p>
-      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;">Formación complementaria</h2>
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;" data-i18n="cert.eyebrow">Certificaciones</p>
+      <h2 style="font-size:clamp(26px,6vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.1;" data-i18n="cert.h2">Formación complementaria</h2>
     </div>
-    <p data-animate style="font-size:12px;color:#a1a1a6;margin-bottom:14px;">Toca una certificación para ver el diploma.</p>
+    <p data-animate style="font-size:12px;color:#a1a1a6;margin-bottom:14px;" data-i18n="cert.hint">Toca una certificación para ver el diploma.</p>
     <div data-animate style="display:grid;gap:12px;margin-bottom:20px;">
       <a href="certs/boa-global-markets-simulation.pdf" target="_blank" rel="noopener" class="cert-row" style="background:#fff;border-radius:16px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:inherit;">
         <div style="display:flex;align-items:center;gap:14px;">
@@ -445,7 +451,7 @@
           <span style="font-size:14px;font-weight:600;color:#1d1d1f;">Global Markets Sales & Trading Analyst — Job Simulation</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Bank of America · vía Forage</span>
+          <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Bank of America · <span data-i18n="cert.boa.via">vía Forage</span></span>
           <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
         </div>
       </a>
@@ -457,7 +463,7 @@
           <span style="font-size:14px;font-weight:600;color:#1d1d1f;">CS50's Introduction to Artificial Intelligence with Python</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Universidad de Harvard</span>
+          <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;" data-i18n="cert.harvard.provider">Universidad de Harvard</span>
           <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
         </div>
       </a>
@@ -478,7 +484,7 @@
           <div style="width:44px;height:44px;border-radius:9px;background:#fff;border:1px solid #e8e8ed;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:7px;">
             <img src="logos/cambridge.svg" alt="University of Cambridge" style="width:100%;height:100%;object-fit:contain;" />
           </div>
-          <span style="font-size:14px;font-weight:600;color:#1d1d1f;">First Certificate in English (FCE) — Nivel B2</span>
+          <span style="font-size:14px;font-weight:600;color:#1d1d1f;" data-i18n="cert.cambridge.title">First Certificate in English (FCE) — Nivel B2</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
           <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Cambridge English</span>
@@ -493,12 +499,12 @@
           <span style="font-size:14px;font-weight:600;color:#1d1d1f;">Elements of AI</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;">Universidad de Helsinki / MinnaLearn</span>
+          <span style="font-size:12px;color:#a1a1a6;white-space:nowrap;" data-i18n="cert.helsinki.provider">Universidad de Helsinki / MinnaLearn</span>
           <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
         </div>
       </a>
     </div>
-    <p data-animate style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:12px;">Cursos adicionales</p>
+    <p data-animate style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:12px;" data-i18n="cert.additional">Cursos adicionales</p>
     <div data-animate style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">
       <a href="certs/career-essentials-genai.jpg" target="_blank" rel="noopener" class="cert-badge"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg" onerror="this.remove()" alt="">
         <span>Career Essentials in Generative AI<br><small style="color:#a1a1a6;font-weight:500;">Microsoft &amp; LinkedIn</small></span>
@@ -520,12 +526,12 @@
 <section id="proyectos" style="background:#fff;padding:96px 5%;">
   <div style="max-width:1000px;margin:0 auto;">
     <div data-animate style="margin-bottom:48px;text-align:center;">
-      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;">Proyectos</p>
-      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;margin-bottom:10px;">Lo que he construido</h2>
-      <p style="font-size:13px;color:#a1a1a6;">Pasa el ratón (o toca en móvil) para ver el detalle técnico de cada proyecto.</p>
+      <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;" data-i18n="proj.eyebrow">Proyectos</p>
+      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;margin-bottom:10px;" data-i18n="proj.h2">Lo que he construido</h2>
+      <p style="font-size:13px;color:#a1a1a6;" data-i18n="proj.hint">Pasa el ratón (o toca en móvil) para ver el detalle técnico de cada proyecto.</p>
     </div>
 
-    <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;">Proyectos técnicos</p>
+    <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;" data-i18n="proj.technical">Proyectos técnicos</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:56px;" class="mob-single">
 
       <div data-animate class="proj-card featured" style="grid-column:1/-1;background:#06060E;">
@@ -540,17 +546,17 @@
               <span class="proj-tag">2026</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">JavaScript vanilla</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg" onerror="this.remove()" alt="">Cloudflare Workers</span>
             </div>
             <h3 style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">PathFolio</h3>
-            <p style="font-size:14px;color:rgba(255,255,255,.55);">Cuestionario bilingüe de perfil de inversión, con backtesting contra precios históricos reales.</p>
+            <p style="font-size:14px;color:rgba(255,255,255,.55);" data-i18n="proj.pathfolio.desc">Cuestionario bilingüe de perfil de inversión, con backtesting contra precios históricos reales.</p>
           </div>
         </div>
         <div class="proj-back" style="padding:32px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-            <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">JavaScript vanilla</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg" onerror="this.remove()" alt="">Cloudflare Workers</span><span class="proj-tag">298 tests en CI</span>
+            <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">JavaScript vanilla</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg" onerror="this.remove()" alt="">Cloudflare Workers</span><span class="proj-tag" data-i18n="proj.pathfolio.tag3">298 tests en CI</span>
           </div>
-          <p style="font-size:14px;color:#fff;line-height:1.7;max-width:560px;margin-bottom:14px;">Cuestionario bilingüe (ES/EN, 27 preguntas con ramificación condicional) que asigna una cartera de ejemplo entre 20 instrumentos reales y la contrasta contra precios históricos, con conversión EUR/USD día a día, comisiones e inflación. Credenciales de API retiradas a un proxy propio en Cloudflare Workers con listas blancas de símbolos y orígenes; 298 aserciones de prueba automatizadas en CI en cada push, cero dependencias de producción.</p>
+          <p style="font-size:14px;color:#fff;line-height:1.7;max-width:560px;margin-bottom:14px;" data-i18n="proj.pathfolio.detail">Cuestionario bilingüe (ES/EN, 27 preguntas con ramificación condicional) que asigna una cartera de ejemplo entre 20 instrumentos reales y la contrasta contra precios históricos, con conversión EUR/USD día a día, comisiones e inflación. Credenciales de API retiradas a un proxy propio en Cloudflare Workers con listas blancas de símbolos y orígenes; 298 aserciones de prueba automatizadas en CI en cada push, cero dependencias de producción.</p>
           <div style="display:flex;gap:20px;">
-            <a href="https://andregomezzenteno-sudo.github.io/pathfolio/" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;">Ver proyecto ↗</a>
-            <a href="https://github.com/andregomezzenteno-sudo/pathfolio" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Código ↗</a>
+            <a href="https://andregomezzenteno-sudo.github.io/pathfolio/" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;" data-i18n="proj.view">Ver proyecto ↗</a>
+            <a href="https://github.com/andregomezzenteno-sudo/pathfolio" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;" data-i18n="proj.code">Código ↗</a>
           </div>
         </div>
       </div>
@@ -567,17 +573,17 @@
               <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">2026 · JavaScript</span>
             </div>
             <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">trading-backtester</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,.5);">Backtester de cruce de medias móviles con métricas de riesgo estándar.</p>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);" data-i18n="proj.backtester.desc">Backtester de cruce de medias móviles con métricas de riesgo estándar.</p>
           </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
             <span class="proj-tag">Sharpe / Sortino</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg" onerror="this.remove()" alt="">Cloudflare Workers</span>
           </div>
-          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Backtester de cruce de medias móviles sobre cripto, acciones, índices y materias primas, sin sesgo de anticipación, con métricas Sharpe/Sortino/drawdown. Incluye simulador de posiciones apalancadas con liquidación de margen real y comparador de estructuras evergreen/private equity con modelo académico de appraisal-smoothing.</p>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;" data-i18n="proj.backtester.detail">Backtester de cruce de medias móviles sobre cripto, acciones, índices y materias primas, sin sesgo de anticipación, con métricas Sharpe/Sortino/drawdown. Incluye simulador de posiciones apalancadas con liquidación de margen real y comparador de estructuras evergreen/private equity con modelo académico de appraisal-smoothing.</p>
           <div style="display:flex;gap:20px;">
-            <a href="https://andregomezzenteno-sudo.github.io/trading-backtester/" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;">Ver proyecto ↗</a>
-            <a href="https://github.com/andregomezzenteno-sudo/trading-backtester" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Código ↗</a>
+            <a href="https://andregomezzenteno-sudo.github.io/trading-backtester/" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;" data-i18n="proj.view">Ver proyecto ↗</a>
+            <a href="https://github.com/andregomezzenteno-sudo/trading-backtester" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;" data-i18n="proj.code">Código ↗</a>
           </div>
         </div>
       </div>
@@ -594,24 +600,24 @@
               <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" onerror="this.remove()" alt="">2026 · Python</span>
             </div>
             <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">Portfolio Drift Monitor</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,.5);">Supervisión de carteras para banca privada: desviación y riesgo de concentración.</p>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);" data-i18n="proj.driftmonitor.desc">Supervisión de carteras para banca privada: desviación y riesgo de concentración.</p>
           </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
             <span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg" onerror="this.remove()" alt="">FastAPI</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" onerror="this.remove()" alt="">PostgreSQL</span><span class="proj-tag"><img class="chip-icon on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg" onerror="this.remove()" alt="">CI/CD</span>
           </div>
-          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Sistema de supervisión de carteras que detecta desviación de asignación y riesgo de concentración en 40 carteras simuladas mediante SQL avanzado (funciones de ventana, gaps-and-islands). Motor de reglas determinista y auditable para el cálculo de objetivos de asignación — sin caja negra ni LLM en la decisión — con 10 tests unitarios y CI/CD (GitHub Actions).</p>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;" data-i18n="proj.driftmonitor.detail">Sistema de supervisión de carteras que detecta desviación de asignación y riesgo de concentración en 40 carteras simuladas mediante SQL avanzado (funciones de ventana, gaps-and-islands). Motor de reglas determinista y auditable para el cálculo de objetivos de asignación — sin caja negra ni LLM en la decisión — con 10 tests unitarios y CI/CD (GitHub Actions).</p>
           <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
-            <a href="https://portfolio-drift-monitor.onrender.com" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;">Ver proyecto ↗</a>
-            <a href="https://github.com/andregomezzenteno-sudo/portfolio-drift-monitor" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Código ↗</a>
-            <span style="font-size:11px;color:rgba(255,255,255,.35);">(demo tarda ~30s en despertar)</span>
+            <a href="https://portfolio-drift-monitor.onrender.com" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;" data-i18n="proj.view">Ver proyecto ↗</a>
+            <a href="https://github.com/andregomezzenteno-sudo/portfolio-drift-monitor" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;" data-i18n="proj.code">Código ↗</a>
+            <span style="font-size:11px;color:rgba(255,255,255,.35);" data-i18n="proj.driftmonitor.wake">(demo tarda ~30s en despertar)</span>
           </div>
         </div>
       </div>
     </div>
 
-    <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;">Proyectos web</p>
+    <p data-animate style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;margin-bottom:14px;" data-i18n="proj.web">Proyectos web</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
 
       <div data-animate class="proj-card" style="grid-column:1/-1;background:#06060E;">
@@ -626,16 +632,16 @@
             <div>
               <span class="proj-tag" style="margin-bottom:6px;display:inline-block;">Web</span>
               <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:4px;">Verapaz Express</h3>
-              <p style="font-size:13px;color:rgba(255,255,255,.5);">Tienda guatemalteca en Nashville, TN — envíos de dinero y encomiendas a Guatemala y Honduras.</p>
+              <p style="font-size:13px;color:rgba(255,255,255,.5);" data-i18n="proj.verapaz.desc">Tienda guatemalteca en Nashville, TN — envíos de dinero y encomiendas a Guatemala y Honduras.</p>
             </div>
           </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-            <span class="proj-tag">Diseño moderno</span><span class="proj-tag">Mobile-first</span>
+            <span class="proj-tag" data-i18n="proj.verapaz.tag1">Diseño moderno</span><span class="proj-tag">Mobile-first</span>
           </div>
-          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Sitio para el negocio familiar en Plaza Mariachi (Nashville): productos guatemaltecos, envío de dinero y encomiendas.</p>
-          <a href="https://verapaz.pages.dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;">Ver proyecto ↗</a>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;" data-i18n="proj.verapaz.detail">Sitio para el negocio familiar en Plaza Mariachi (Nashville): productos guatemaltecos, envío de dinero y encomiendas.</p>
+          <a href="https://verapaz.pages.dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#60a5fa;" data-i18n="proj.view">Ver proyecto ↗</a>
         </div>
       </div>
 
@@ -649,15 +655,15 @@
           <div class="proj-front-body">
             <img src="serom-logo.png" alt="Serom A&G" style="height:22px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:10px;" />
             <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">SEROM A&amp;G</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,.5);">Landing premium con estética oscura y automatización.</p>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);" data-i18n="proj.serom.desc">Landing premium con estética oscura y automatización.</p>
           </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-            <span class="proj-tag">Automatización</span><span class="proj-tag">Dark design</span>
+            <span class="proj-tag" data-i18n="proj.serom.tag1">Automatización</span><span class="proj-tag">Dark design</span>
           </div>
-          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Web de la empresa que cofundo con Gabriel Martínez Bravo — partículas animadas y formulario multi-paso.</p>
-          <a href="https://seromautomationgrowth.es" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#a78bfa;">Ver proyecto ↗</a>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;" data-i18n="proj.serom.detail">Web de la empresa que cofundo con Gabriel Martínez Bravo — partículas animadas y formulario multi-paso.</p>
+          <a href="https://seromautomationgrowth.es" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#a78bfa;" data-i18n="proj.view">Ver proyecto ↗</a>
         </div>
       </div>
 
@@ -671,15 +677,15 @@
           <div class="proj-front-body">
             <p style="font-size:20px;font-weight:300;color:#fff;font-family:Georgia,'Times New Roman',serif;font-style:italic;margin-bottom:8px;">дрЭ</p>
             <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:6px;">All Pain Ends</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,.5);">Marca personal editorial minimalista.</p>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);" data-i18n="proj.ape.desc">Marca personal editorial minimalista.</p>
           </div>
         </div>
         <div class="proj-back" style="padding:26px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
             <span class="proj-tag">Branding</span><span class="proj-tag">ES/EN</span>
           </div>
-          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;">Diseño editorial minimalista con toggle de idioma.</p>
-          <a href="https://allpainends.pages.dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:rgba(255,255,255,.8);">Ver proyecto ↗</a>
+          <p style="font-size:13px;color:#fff;line-height:1.65;margin-bottom:14px;" data-i18n="proj.ape.detail">Diseño editorial minimalista con toggle de idioma.</p>
+          <a href="https://allpainends.pages.dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:rgba(255,255,255,.8);" data-i18n="proj.view">Ver proyecto ↗</a>
         </div>
       </div>
 
@@ -692,21 +698,21 @@
   <div style="max-width:900px;margin:0 auto;">
     <div data-animate style="margin-bottom:44px;text-align:center;">
       <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1d1d1f;margin-bottom:12px;">Skills</p>
-      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;">Lo que domino</h2>
+      <h2 style="font-size:clamp(26px,7vw,42px);font-weight:700;letter-spacing:-.04em;color:#1d1d1f;line-height:1.05;" data-i18n="skills.h2">Lo que domino</h2>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mob-single">
       <div data-animate class="skill-group">
-        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Financiero</h3>
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;" data-i18n="skills.financial">Financiero</h3>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg>Trading en renta variable</span>
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Inversión largo plazo en cripto</span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg><span data-i18n="skills.f1">Trading en renta variable</span></span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="skills.f2">Inversión largo plazo en cripto</span></span>
           <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>Sharpe / Sortino / drawdown</span>
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>Análisis macroeconómico</span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg><span data-i18n="skills.f4">Análisis macroeconómico</span></span>
         </div>
       </div>
       <div data-animate class="skill-group">
-        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Técnico</h3>
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;" data-i18n="skills.technical">Técnico</h3>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
           <span class="skill-chip"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" onerror="this.remove()" alt="">Python</span>
           <span class="skill-chip"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" onerror="this.remove()" alt="">JavaScript</span>
@@ -717,21 +723,21 @@
         </div>
       </div>
       <div data-animate class="skill-group">
-        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Desarrollo asistido por IA</h3>
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;" data-i18n="skills.ai">Desarrollo asistido por IA</h3>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
           <span class="skill-chip"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt="">Claude Code</span>
-          <span class="skill-chip"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt="">Integración API Claude</span>
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7l7 9M16 7L9 16"/></svg>Flujos agénticos</span>
+          <span class="skill-chip"><img class="chip-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" onerror="this.remove()" alt=""><span data-i18n="skills.ai2">Integración API Claude</span></span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7l7 9M16 7L9 16"/></svg><span data-i18n="skills.ai3">Flujos agénticos</span></span>
           <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6z"/></svg>Vibe coding</span>
         </div>
       </div>
       <div data-animate class="skill-group">
-        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;">Transversales & Idiomas</h3>
+        <h3 style="font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:14px;" data-i18n="skills.core">Transversales & Idiomas</h3>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Pensamiento estratégico</span>
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6l9 4 9-4-9-4z"/><path d="M3 6v6c0 4 4 7 9 8 5-1 9-4 9-8V6"/></svg>Disciplina bajo presión</span>
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>Español — nativo</span>
-          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>Inglés — B2</span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span data-i18n="skills.c1">Pensamiento estratégico</span></span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6l9 4 9-4-9-4z"/><path d="M3 6v6c0 4 4 7 9 8 5-1 9-4 9-8V6"/></svg><span data-i18n="skills.c2">Disciplina bajo presión</span></span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg><span data-i18n="skills.c3">Español — nativo</span></span>
+          <span class="skill-chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg><span data-i18n="skills.c4">Inglés — B2</span></span>
         </div>
       </div>
     </div>
@@ -743,21 +749,21 @@
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,140vw);height:min(420px,84vw);background:radial-gradient(ellipse,rgba(0,0,0,.18) 0%,transparent 65%);pointer-events:none;animation:drift2 12s ease-in-out infinite;"></div>
   <div style="position:absolute;top:15%;left:12%;width:min(300px,60vw);height:min(300px,60vw);background:radial-gradient(circle,rgba(124,58,237,.14) 0%,transparent 65%);pointer-events:none;border-radius:50%;animation:drift1 16s ease-in-out infinite;"></div>
   <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;" data-animate>
-    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,162,255,.7);margin-bottom:16px;">Contacto</p>
-    <h2 style="font-size:clamp(30px,9vw,52px);font-weight:700;letter-spacing:-.045em;color:#fff;line-height:1.05;margin-bottom:20px;">Hablemos</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:40px;font-weight:300;">Abierto a oportunidades en fintech, IA aplicada y mercados financieros.</p>
+    <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,162,255,.7);margin-bottom:16px;" data-i18n="contact.eyebrow">Contacto</p>
+    <h2 style="font-size:clamp(30px,9vw,52px);font-weight:700;letter-spacing:-.045em;color:#fff;line-height:1.05;margin-bottom:20px;" data-i18n="contact.h2">Hablemos</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:40px;font-weight:300;" data-i18n="contact.desc">Abierto a oportunidades en fintech, IA aplicada y mercados financieros.</p>
     <div style="display:flex;flex-direction:column;gap:12px;align-items:center;max-width:340px;margin:0 auto;">
-      <a href="mailto:andregomezzenteno@gmail.com" class="btn-primary" style="width:100%;">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andregomezzenteno@gmail.com&su=Contacto%20desde%20tu%20CV" target="_blank" rel="noopener" class="btn-primary" style="width:100%;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
         andregomezzenteno@gmail.com
       </a>
       <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="btn-linkedin" style="width:100%;justify-content:center;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        Conectar en LinkedIn
+        <span data-i18n="contact.linkedin">Conectar en LinkedIn</span>
       </a>
       <a href="https://github.com/andregomezzenteno-sudo" target="_blank" rel="noopener" class="btn-ghost" style="width:100%;border-color:rgba(255,255,255,.25);color:#fff;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.763-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.874.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.48 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.696.825.578C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        Ver GitHub
+        <span data-i18n="contact.github">Ver GitHub</span>
       </a>
     </div>
   </div>
@@ -771,7 +777,7 @@
   <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
     <a href="https://www.linkedin.com/in/andr%C3%A9-gomez-zenteno-b2b637277/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
     <a href="https://github.com/andregomezzenteno-sudo" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-    <a href="mailto:andregomezzenteno@gmail.com" class="footer-link">Email</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andregomezzenteno@gmail.com" target="_blank" rel="noopener" class="footer-link" data-i18n="footer.email">Email</a>
   </div>
   <p style="font-size:12px;color:rgba(255,255,255,.18);">© 2026 André Gómez Zenteno</p>
 </footer>
@@ -824,6 +830,175 @@
 
   document.querySelectorAll('.proj-card').forEach((card) => {
     card.addEventListener('click', () => card.classList.toggle('open'));
+  });
+
+  // ── i18n (ES/EN toggle) ──
+  const I18N = {
+    es: {
+      'meta.title': 'André Gómez Zenteno — CV',
+      'meta.description': 'André Gómez Zenteno — CV virtual interactivo. Desarrollo de software asistido por IA, mercados financieros y trading.',
+      'nav.about': 'Sobre mí', 'nav.experience': 'Experiencia', 'nav.projects': 'Proyectos', 'nav.contact': 'Contacto',
+      'hero.badge': 'Abierto a nuevas oportunidades',
+      'hero.subtitle': 'Desarrollo de Software Asistido por IA (Vibe Coding) · Mercados Financieros y Trading · Pensamiento Estratégico',
+      'hero.location': 'Cáceres, Extremadura, España · originario de Guatemala',
+      'hero.cta.contact': 'Contactar', 'hero.cta.linkedin': 'Ver LinkedIn', 'hero.scroll': 'Scroll',
+      'about.eyebrow': 'Sobre mí',
+      'about.h2': 'Finanzas cuantitativas +<br>ingeniería de IA aplicada',
+      'about.p1': 'Construyo en la intersección exacta que buscan las fintech: <strong style="color:#1d1d1f;font-weight:600;">mercados financieros reales</strong> y <strong style="color:#1d1d1f;font-weight:600;">software de producción asistido por IA</strong>. Trading activo, banca operativa, y tres proyectos técnicos con metodología financiera auditable — CI/CD, testing automatizado, cero caja negra en las decisiones críticas.',
+      'about.p2': 'Co-CEO y cofundador de <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong> junto a <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>. Completé la simulación de analista de Sales &amp; Trading de <strong style="color:#1d1d1f;font-weight:600;">Bank of America</strong> (Forage). Certificado por <strong style="color:#1d1d1f;font-weight:600;">Harvard</strong> (CS50 AI), la <strong style="color:#1d1d1f;font-weight:600;">Universidad de Helsinki</strong>, <strong style="color:#1d1d1f;font-weight:600;">CFTE</strong> y <strong style="color:#1d1d1f;font-weight:600;">Cambridge English (B2)</strong>.',
+      'about.p3': 'Fuera de pantalla, entreno MMA y BJJ — incluidos seminarios con peleadores de UFC. La misma disciplina que exigen los mercados: la presión revela quién eres, y gana quien es constante.',
+      'about.fact1': 'Trader independiente', 'about.fact3': 'Vibe coding', 'about.fact5': 'Inglés — B2',
+      'exp.eyebrow': 'Experiencia', 'exp.h2': 'Recorrido profesional',
+      'exp.hint.desktop': 'Pasa el ratón por cada tarjeta para ver el detalle.',
+      'exp.hint.mobile': 'Toca cada tarjeta para ver el detalle.',
+      'exp.1.title': 'Trader Independiente', 'exp.1.subtitle': 'Autónomo · España', 'exp.1.date': 'En curso',
+      'exp.1.detail': 'Trading en renta variable y otros instrumentos cotizados con rentabilidad positiva, aplicando gestión de riesgo disciplinada. Mantengo una posición de inversión a largo plazo en criptoactivos, respaldada por análisis macroeconómico y geopolítico.',
+      'exp.2.title': 'Co-CEO & Cofundador', 'exp.2.subtitle': 'Autónomo', 'exp.2.date': '2025 — Presente',
+      'exp.2.detail': 'Empresa española de automatización y crecimiento digital, cofundada junto a Gabriel Martínez Bravo. Desarrollo de páginas web, automatización de procesos con formularios/IA y aplicación de agentes inteligentes a negocios reales.',
+      'exp.3.title': 'Desarrollo de Herramientas Internas', 'exp.3.subtitle': 'Verapaz Express (Negocio Familiar) · Estados Unidos (remoto)', 'exp.3.date': '2022 — Presente',
+      'exp.3.detail': 'Diseñé y construí un sistema de gestión de inventario, al que integré un agente de IA (API de Claude) capaz de leer, analizar y ejecutar acciones sobre el sistema con confirmación explícita del usuario y registro de cada acción, junto con una app de reserva de citas.',
+      'exp.4.title': 'Estudiante en Prácticas Administrativas', 'exp.4.subtitle': 'Universidad Popular de Villanueva de la Serena · España', 'exp.4.date': 'Mar — Abr 2026',
+      'exp.4.detail': 'Apoyo en organización documental, atención al público y coordinación de actividades formativas en una institución pública.',
+      'exp.5.title': 'Representante de Atención al Cliente', 'exp.5.subtitle': 'Allied Global (campaña de telecomunicaciones) · Guatemala', 'exp.5.date': '2023 (8 meses)',
+      'exp.5.detail': 'Atención telefónica a clientes de una compañía de telecomunicaciones en un entorno BPO de ritmo exigente.',
+      'exp.6.title': 'Representante de Atención al Cliente', 'exp.6.subtitle': 'Citi · Ciudad de Guatemala, Guatemala', 'exp.6.date': 'Feb — Jul 2022',
+      'exp.6.detail': 'Atención directa al cliente dentro de una institución bancaria global, desarrollando disciplina operativa y comprensión práctica de procesos financieros regulados.',
+      'edu.eyebrow': 'Educación', 'edu.h2': 'Formación',
+      'edu.1.desc': 'Ciclo Formativo de Grado Superior — Finanzas y Administración', 'edu.1.date': '2025 — 2027',
+      'edu.2.desc': 'Licenciatura en Economía Empresarial — Finanzas y Mercados Financieros', 'edu.2.date': '2023',
+      'edu.3.title': 'Homologación al título de Bachiller',
+      'edu.3.desc': 'Ministerio de Educación, Formación Profesional y Deportes (España) — estudios de Guatemala reconocidos bajo LOE', 'edu.3.date': '2024',
+      'cert.eyebrow': 'Certificaciones', 'cert.h2': 'Formación complementaria',
+      'cert.hint': 'Toca una certificación para ver el diploma.',
+      'cert.boa.via': 'vía Forage', 'cert.harvard.provider': 'Universidad de Harvard',
+      'cert.cambridge.title': 'First Certificate in English (FCE) — Nivel B2',
+      'cert.helsinki.provider': 'Universidad de Helsinki / MinnaLearn', 'cert.additional': 'Cursos adicionales',
+      'proj.eyebrow': 'Proyectos', 'proj.h2': 'Lo que he construido',
+      'proj.hint': 'Pasa el ratón (o toca en móvil) para ver el detalle técnico de cada proyecto.',
+      'proj.technical': 'Proyectos técnicos', 'proj.web': 'Proyectos web',
+      'proj.view': 'Ver proyecto ↗', 'proj.code': 'Código ↗',
+      'proj.pathfolio.desc': 'Cuestionario bilingüe de perfil de inversión, con backtesting contra precios históricos reales.',
+      'proj.pathfolio.tag3': '298 tests en CI',
+      'proj.pathfolio.detail': 'Cuestionario bilingüe (ES/EN, 27 preguntas con ramificación condicional) que asigna una cartera de ejemplo entre 20 instrumentos reales y la contrasta contra precios históricos, con conversión EUR/USD día a día, comisiones e inflación. Credenciales de API retiradas a un proxy propio en Cloudflare Workers con listas blancas de símbolos y orígenes; 298 aserciones de prueba automatizadas en CI en cada push, cero dependencias de producción.',
+      'proj.backtester.desc': 'Backtester de cruce de medias móviles con métricas de riesgo estándar.',
+      'proj.backtester.detail': 'Backtester de cruce de medias móviles sobre cripto, acciones, índices y materias primas, sin sesgo de anticipación, con métricas Sharpe/Sortino/drawdown. Incluye simulador de posiciones apalancadas con liquidación de margen real y comparador de estructuras evergreen/private equity con modelo académico de appraisal-smoothing.',
+      'proj.driftmonitor.desc': 'Supervisión de carteras para banca privada: desviación y riesgo de concentración.',
+      'proj.driftmonitor.detail': 'Sistema de supervisión de carteras que detecta desviación de asignación y riesgo de concentración en 40 carteras simuladas mediante SQL avanzado (funciones de ventana, gaps-and-islands). Motor de reglas determinista y auditable para el cálculo de objetivos de asignación — sin caja negra ni LLM en la decisión — con 10 tests unitarios y CI/CD (GitHub Actions).',
+      'proj.driftmonitor.wake': '(demo tarda ~30s en despertar)',
+      'proj.verapaz.desc': 'Tienda guatemalteca en Nashville, TN — envíos de dinero y encomiendas a Guatemala y Honduras.',
+      'proj.verapaz.tag1': 'Diseño moderno',
+      'proj.verapaz.detail': 'Sitio para el negocio familiar en Plaza Mariachi (Nashville): productos guatemaltecos, envío de dinero y encomiendas.',
+      'proj.serom.desc': 'Landing premium con estética oscura y automatización.',
+      'proj.serom.tag1': 'Automatización',
+      'proj.serom.detail': 'Web de la empresa que cofundo con Gabriel Martínez Bravo — partículas animadas y formulario multi-paso.',
+      'proj.ape.desc': 'Marca personal editorial minimalista.',
+      'proj.ape.detail': 'Diseño editorial minimalista con toggle de idioma.',
+      'skills.h2': 'Lo que domino', 'skills.financial': 'Financiero',
+      'skills.f1': 'Trading en renta variable', 'skills.f2': 'Inversión largo plazo en cripto', 'skills.f4': 'Análisis macroeconómico',
+      'skills.technical': 'Técnico',
+      'skills.ai': 'Desarrollo asistido por IA', 'skills.ai2': 'Integración API Claude', 'skills.ai3': 'Flujos agénticos',
+      'skills.core': 'Transversales & Idiomas', 'skills.c1': 'Pensamiento estratégico', 'skills.c2': 'Disciplina bajo presión',
+      'skills.c3': 'Español — nativo', 'skills.c4': 'Inglés — B2',
+      'contact.eyebrow': 'Contacto', 'contact.h2': 'Hablemos',
+      'contact.desc': 'Abierto a oportunidades en fintech, IA aplicada y mercados financieros.',
+      'contact.linkedin': 'Conectar en LinkedIn', 'contact.github': 'Ver GitHub',
+      'footer.email': 'Email'
+    },
+    en: {
+      'meta.title': 'André Gómez Zenteno — Resume',
+      'meta.description': 'André Gómez Zenteno — Interactive virtual resume. AI-assisted software development, financial markets and trading.',
+      'nav.about': 'About', 'nav.experience': 'Experience', 'nav.projects': 'Projects', 'nav.contact': 'Contact',
+      'hero.badge': 'Open to new opportunities',
+      'hero.subtitle': 'AI-Assisted Software Development (Vibe Coding) · Financial Markets &amp; Trading · Strategic Thinking',
+      'hero.location': 'Cáceres, Extremadura, Spain · originally from Guatemala',
+      'hero.cta.contact': 'Get in touch', 'hero.cta.linkedin': 'View LinkedIn', 'hero.scroll': 'Scroll',
+      'about.eyebrow': 'About me',
+      'about.h2': 'Quantitative finance +<br>applied AI engineering',
+      'about.p1': 'I build at the exact intersection fintechs are hiring for: <strong style="color:#1d1d1f;font-weight:600;">real financial markets</strong> and <strong style="color:#1d1d1f;font-weight:600;">production-grade, AI-assisted software</strong>. Active trading, banking operations, and three technical projects built with auditable financial methodology — CI/CD, automated testing, zero black-box decisions.',
+      'about.p2': 'Co-CEO and co-founder of <strong style="color:#1d1d1f;font-weight:600;">SEROM Automation &amp; Growth</strong> alongside <strong style="color:#1d1d1f;font-weight:600;">Gabriel Martínez Bravo</strong>. Completed <strong style="color:#1d1d1f;font-weight:600;">Bank of America</strong>&#39;s Sales &amp; Trading Analyst job simulation (Forage). Certified by <strong style="color:#1d1d1f;font-weight:600;">Harvard</strong> (CS50 AI), the <strong style="color:#1d1d1f;font-weight:600;">University of Helsinki</strong>, <strong style="color:#1d1d1f;font-weight:600;">CFTE</strong>, and <strong style="color:#1d1d1f;font-weight:600;">Cambridge English (B2)</strong>.',
+      'about.p3': 'Off-screen, I train MMA and BJJ — including seminars with UFC fighters. The same discipline the markets demand: pressure reveals who you are, and consistency wins long-term.',
+      'about.fact1': 'Independent trader', 'about.fact3': 'Vibe coding', 'about.fact5': 'English — B2',
+      'exp.eyebrow': 'Experience', 'exp.h2': 'Professional journey',
+      'exp.hint.desktop': 'Hover each card to see the detail.',
+      'exp.hint.mobile': 'Tap each card to see the detail.',
+      'exp.1.title': 'Independent Trader', 'exp.1.subtitle': 'Self-directed · Spain', 'exp.1.date': 'Ongoing',
+      'exp.1.detail': 'Trade equities and other listed instruments with a positive track record, applying disciplined risk management. Hold a long-term investment position in crypto-assets, informed by macroeconomic and geopolitical analysis.',
+      'exp.2.title': 'Co-CEO & Co-founder', 'exp.2.subtitle': 'Self-employed', 'exp.2.date': '2025 — Present',
+      'exp.2.detail': 'Spanish automation and digital growth company, co-founded with Gabriel Martínez Bravo. Web development, process automation with forms/AI, and applying intelligent agents to real businesses.',
+      'exp.3.title': 'Internal Tools Development', 'exp.3.subtitle': 'Verapaz Express (Family Business) · United States (remote)', 'exp.3.date': '2022 — Present',
+      'exp.3.detail': 'Designed and built an inventory management system, later integrating an AI agent (Claude API) able to read, analyze, and take action on the system — gated by explicit user confirmation and full action logging — plus an appointment-booking app.',
+      'exp.4.title': 'Administrative Trainee', 'exp.4.subtitle': 'Universidad Popular de Villanueva de la Serena · Spain', 'exp.4.date': 'Mar — Apr 2026',
+      'exp.4.detail': 'Supported document organization, public-facing service, and coordination of training activities in a public institution.',
+      'exp.5.title': 'Customer Service Representative', 'exp.5.subtitle': 'Allied Global (telecom campaign) · Guatemala', 'exp.5.date': '2023 (8 months)',
+      'exp.5.detail': 'Delivered inbound customer support for a telecommunications client in a fast-paced BPO environment.',
+      'exp.6.title': 'Customer Service Representative', 'exp.6.subtitle': 'Citi · Guatemala City, Guatemala', 'exp.6.date': 'Feb — Jul 2022',
+      'exp.6.detail': 'Delivered frontline customer service within a global banking institution, building operational discipline and a working understanding of regulated financial processes.',
+      'edu.eyebrow': 'Education', 'edu.h2': 'Academic background',
+      'edu.1.desc': 'Higher Vocational Training — Finance &amp; Administration', 'edu.1.date': '2025 — 2027',
+      'edu.2.desc': "Bachelor's in Business Economics — Finance &amp; Financial Markets", 'edu.2.date': '2023',
+      'edu.3.title': 'Spanish Baccalaureate Homologation',
+      'edu.3.desc': 'Spanish Ministry of Education, Vocational Training and Sports — Guatemalan studies recognized under Spanish law (LOE)', 'edu.3.date': '2024',
+      'cert.eyebrow': 'Certifications', 'cert.h2': 'Additional credentials',
+      'cert.hint': 'Tap a certification to view the diploma.',
+      'cert.boa.via': 'via Forage', 'cert.harvard.provider': 'Harvard University',
+      'cert.cambridge.title': 'First Certificate in English (FCE) — B2 Level',
+      'cert.helsinki.provider': 'University of Helsinki / MinnaLearn', 'cert.additional': 'Additional courses',
+      'proj.eyebrow': 'Projects', 'proj.h2': "What I've built",
+      'proj.hint': "Hover (or tap on mobile) to see each project's technical detail.",
+      'proj.technical': 'Technical projects', 'proj.web': 'Web projects',
+      'proj.view': 'View project ↗', 'proj.code': 'Code ↗',
+      'proj.pathfolio.desc': 'Bilingual investment-profile questionnaire, with backtesting against real historical prices.',
+      'proj.pathfolio.tag3': '298 tests in CI',
+      'proj.pathfolio.detail': 'Built a bilingual (ES/EN) investment-profile questionnaire (27 branching questions) that allocates a sample portfolio across 20 real instruments and backtests it against real historical prices, with day-by-day EUR/USD conversion, fee drag, and inflation adjustment. Removed exposed API credentials to a self-built Cloudflare Worker proxy with symbol/origin allow-lists; shipped with 298 automated test assertions in CI on every push, zero production dependencies.',
+      'proj.backtester.desc': 'Moving-average crossover backtester with standard risk metrics.',
+      'proj.backtester.detail': 'Built a moving-average crossover backtester across crypto, equities, indices, and commodities with strict no-lookahead-bias execution and standard risk metrics (Sharpe, Sortino, max drawdown). Implemented a leveraged-position simulator with real isolated-margin liquidation modeling, and an evergreen/private-equity structure comparator applying the academic appraisal-smoothing model to real market data.',
+      'proj.driftmonitor.desc': 'Private-banking portfolio monitoring: allocation drift and concentration risk.',
+      'proj.driftmonitor.detail': 'Designed and deployed a private-banking portfolio monitoring system that flags allocation drift and concentration risk across 40 simulated client portfolios using advanced SQL (window functions, gaps-and-islands technique for persistence tracking). Built a deterministic, auditable rules engine for target-allocation calculation (no black box, no LLM in the decision path); shipped with 10 automated unit tests and CI/CD (GitHub Actions).',
+      'proj.driftmonitor.wake': '(demo takes ~30s to wake up)',
+      'proj.verapaz.desc': 'Guatemalan store in Nashville, TN — money transfers and package shipping to Guatemala and Honduras.',
+      'proj.verapaz.tag1': 'Modern design',
+      'proj.verapaz.detail': 'Site for the family business at Plaza Mariachi (Nashville): Guatemalan products, money transfers, and package shipping.',
+      'proj.serom.desc': 'Premium landing page with dark aesthetic and automation.',
+      'proj.serom.tag1': 'Automation',
+      'proj.serom.detail': 'Website for the company I co-founded with Gabriel Martínez Bravo — animated particles and multi-step form.',
+      'proj.ape.desc': 'Minimalist editorial personal brand.',
+      'proj.ape.detail': 'Minimalist editorial design with a language toggle.',
+      'skills.h2': 'What I bring', 'skills.financial': 'Financial',
+      'skills.f1': 'Equity trading', 'skills.f2': 'Long-term crypto investing', 'skills.f4': 'Macroeconomic analysis',
+      'skills.technical': 'Technical',
+      'skills.ai': 'AI-Assisted Development', 'skills.ai2': 'Claude API integration', 'skills.ai3': 'Agentic workflows',
+      'skills.core': 'Core Skills & Languages', 'skills.c1': 'Strategic thinking', 'skills.c2': 'Discipline under pressure',
+      'skills.c3': 'Spanish — native', 'skills.c4': 'English — B2',
+      'contact.eyebrow': 'Contact', 'contact.h2': "Let's talk",
+      'contact.desc': 'Open to opportunities in fintech, applied AI, and financial markets.',
+      'contact.linkedin': 'Connect on LinkedIn', 'contact.github': 'View GitHub',
+      'footer.email': 'Email'
+    }
+  };
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    const dict = I18N[lang];
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    const titleEl = document.getElementById('doc-title');
+    if (titleEl) titleEl.textContent = dict['meta.title'];
+    const metaDesc = document.getElementById('meta-description');
+    if (metaDesc) metaDesc.setAttribute('content', dict['meta.description']);
+    const label = document.getElementById('lang-toggle-label');
+    if (label) label.textContent = lang === 'es' ? 'EN' : 'ES';
+    localStorage.setItem('lang', lang);
+  }
+
+  const langToggle = document.getElementById('lang-toggle');
+  let currentLang = 'es';
+  try { currentLang = localStorage.getItem('lang') || 'es'; } catch (e) {}
+  if (currentLang !== 'es') applyLang(currentLang);
+  langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    applyLang(currentLang);
   });
 </script>
 
